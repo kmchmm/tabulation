@@ -48,25 +48,18 @@
                 <table id="applicants">
                     <tr>
                         <th>House Name</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>Content</th>
+                        <th>Creativity</th>
+                        <th>Editing Quality</th>
+
                     </tr>
 
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
                         <td>Sample</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
                     </tr>
 
                 </table>
