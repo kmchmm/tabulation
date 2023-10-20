@@ -19,7 +19,7 @@
                 <ul class="justify-center">
                     <li>
                         <select id="eventSelect">
-                            <option value="dashboard.php" selected>Cultural Night</option>
+                            <option value="dashboard.php">Cultural Night</option>
                             <option value="wannabee.php">Wanna Bee</option>
                             <option value="spoken.php">Spoken Poetry</option>
                             <option value="acoustic.php">Acoustic Band</option>
@@ -30,7 +30,7 @@
                     </li>
                     <li>
                     <select id="eventSelect1">
-                            <option value="ms.php" selected>Mr. & Ms. CCS</option>
+                            <option value="ms.php">Mr. & Ms. CCS</option>
                             <option value="productionnumber.php">Production Number</option>
                             <option value="schooluniform.php">School Uniform</option>
                             <option value="futureattire.php">Futuristic Attire</option>
