@@ -136,9 +136,6 @@ header ul li{
 }
 
 
-  
-
-
 .main-body{
     background-color: #ffffff;
     width: 90%;
@@ -161,7 +158,7 @@ header ul li{
     font-family: 'Poppins', sans-serif;
 }
 
-#applicants th {
+#applicants tr th {
     padding-top: 12px;
     padding-bottom: 12px;
     color: #000000;
