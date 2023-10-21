@@ -33,6 +33,7 @@
                     <li>
                         <div class="select">
                             <select id="eventSelect1">
+                                <option value="ms.php" style="display: none;">Mr. & Ms. CCS</option>
                                 <option value="ms.php">Mr. & Ms. CCS</option>
                                 <option value="productionnumber.php">Production Number</option>
                                 <option value="schooluniform.php">School Uniform</option>
