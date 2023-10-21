@@ -227,6 +227,7 @@ table td{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    text-align: center;
 }
   
 #applicants td, #applicants th {

@@ -53,19 +53,17 @@
                 <table id="applicants">
                     <tr>
                         <th>House Name</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>Wanna Bee</th>
+                        <th>Spoken Poetry</th>
+                        <th>Acoustic Band</th>
+                        <th>Duo</th>
+                        <th>Solo</th>
+                        <th>Video Montage</th>
                     </tr>
 
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
                         <td>Sample</td>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>

@@ -53,20 +53,16 @@
                 <table id="applicants">
                     <tr>
                         <th>Contestant Name</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>Production Number</th>
+                        <th>School Uniform</th>
+                        <th>Futuristic Attire</th>
+                        <th>Formal Attire</th>
+                        <th>Q and A</th>
                     </tr>
 
                     <tr>
                         <td class="applicant_name" style="display: none;">Sample</td>
                         <td>Sample</td>
-                        <td></td>
-                        <td></td>
                         <td></td>
                         <td></td>
                         <td></td>
