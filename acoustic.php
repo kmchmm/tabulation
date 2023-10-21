@@ -18,25 +18,29 @@
                 <div><img src="assets//images/ccs-logo.jpg" alt=""></div>
                 <ul class="justify-center">
                     <li>
-                        <select id="eventSelect">
-                            <option value="dashboard.php">Cultural Night</option>
-                            <option value="wannabee.php">Wanna Bee</option>
-                            <option value="spoken.php">Spoken Poetry</option>
-                            <option value="acoustic.php">Acoustic Band</option>
-                            <option value="duo.php">Duo</option>
-                            <option value="solo.php">Solo</option>
-                            <option value="videomontage.php">Video Montage</option>
-                        </select>
+                        <div class="select">
+                            <select id="eventSelect">
+                            <option value="dashboard.php" style="display: none;">Cultural Night</option>                                <option value="dashboard.php">Cultural Night</option>
+                                <option value="wannabee.php">Wanna Bee</option>
+                                <option value="spoken.php">Spoken Poetry</option>
+                                <option value="acoustic.php">Acoustic Band</option>
+                                <option value="duo.php">Duo</option>
+                                <option value="solo.php">Solo</option>
+                                <option value="videomontage.php">Video Montage</option>
+                            </select>
+                        </div>
                     </li>
                     <li>
-                    <select id="eventSelect1">
-                            <option value="ms.php">Mr. & Ms. CCS</option>
-                            <option value="productionnumber.php">Production Number</option>
-                            <option value="schooluniform.php">School Uniform</option>
-                            <option value="futureattire.php">Futuristic Attire</option>
-                            <option value="formalattire.php">Formal Attire<</option>
-                            <option value="QA.php">Q and A</option>
-                        </select>
+                        <div class="select">
+                            <select id="eventSelect1">
+                                <option value="ms.php">Mr. & Ms. CCS</option>
+                                <option value="productionnumber.php">Production Number</option>
+                                <option value="schooluniform.php">School Uniform</option>
+                                <option value="futureattire.php">Futuristic Attire</option>
+                                <option value="formalattire.php">Formal Attire</option>
+                                <option value="QA.php">Q and A</option>
+                            </select>                        
+                        </div>
                     </li>
                 </ul>
             </nav>
