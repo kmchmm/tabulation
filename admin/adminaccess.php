@@ -15,13 +15,13 @@ if (isset($_POST['username']) && isset($_POST['username'])) {
     $pass = validate($_POST['password']);
 
     if (empty($username)) {
-        header("Location: login.php?error=Username is required");
+        header("Location: adminlogin.php?error=Username is required");
         exit();
     } elseif (empty($pass)) {
-        header("Location: login.php?error=Password is required");
+        header("Location: adminlogin.php?error=Password is required");
         exit();
     } else {
-        $sql = "SELECT * FROM users WHERE username='$username' AND password='$pass'";
+        $sql = "SELECT * FROM user WHERE username='$username' AND password='$pass'";
 
         $result = mysqli_query($conn, $sql);
 
@@ -31,18 +31,18 @@ if (isset($_POST['username']) && isset($_POST['username'])) {
             if ($row['username'] === $username && $row['password'] === $pass) {
                 $_SESSION['username'] = $row['username'];
                 $_SESSION['id'] = $row['id'];
-                header("Location: wannabee.php");
+                header("Location: dashboard.php");
                 exit();
             } else {
-                header("Location: login.php?error=Incorrect Username or Password");
+                header("Location: adminlogin.php?error=Incorrect Username or Password");
                 exit();
             }
         } else {
-            header("Location: login.php?error=Incorrect Username or Password");
+            header("Location: adminlogin.php?error=Incorrect Username or Password");
             exit();
         }
     }
 } else {
-    header("Location: login.php");
+    header("Location: adminlogin.php");
     exit();
 }
