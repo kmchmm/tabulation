@@ -70,7 +70,7 @@
             </div>
         </section>
         <div class="logout-button">
-            <a href="">Log out</a>
+            <a href="logout.php"><button>Log out</button></a>
         </div>
     </div>
 

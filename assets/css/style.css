@@ -49,7 +49,13 @@ li{
 /*****************************/
 /********login*************/
 /*****************************/
-
+.error{
+    background-color: #e28787;
+    color: #fcfcfc;
+    padding: 10px;
+    border-radius: 3px;
+    margin-bottom: 1em;
+}
 .logForm-container{
     width: 100%;
     min-height: 100vh;
@@ -61,7 +67,7 @@ li{
     height: 250px;
 }
 .logForm{
-    width: 50%;
+    width: 70%;
     background-color: #ffffff;
     min-height: 50vh;
     gap: 5em;
@@ -76,7 +82,7 @@ li{
     display: block;
 }
 .logForm form h1{
-    margin-bottom: 2em;
+    margin-bottom: 1em;
 }
 .logForm form div{
     position: relative;
@@ -141,8 +147,6 @@ header ul li{
 }
 
 
-
-
 select {
     /* Reset Select */
     appearance: none;
@@ -189,7 +193,6 @@ select {
   .select:hover::after {
     color: #f39c12;
   }
-
   
 .main-body{
     background-color: #ffffff;
@@ -244,18 +247,19 @@ table td{
  
 
 
-.logout-button{
+.logout-button button{
     margin: 1em 0 0 2em;
     background-color: #0260ee;
     width: 10%;
     padding: 10px 20px;
     text-align: center;
-}
-
-.logout-button:hover{
-    background-color: #054cb8;
-} 
-.logout-button a{
+    border: none;
     color: #ffffff;
     font-size: 1.2em;
+    border-radius: 5px;
+    cursor: pointer;
 }
+
+.logout-button button:hover{
+    background-color: #054cb8;
+} 

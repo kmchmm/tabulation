@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,8 +20,13 @@
                     <img src="assets/images/ccs-logo.jpg" alt="">
                 </div>
                 <div>
-                    <form action="" method="post">
+                    <form action="loginaccess.php" method="post">
                         <h1>Tabulation: Cultural and Mr. & Miss</h1>
+                        
+                        <?php if (isset($_GET['error'])) { ?>
+                            <p class="error"><?php echo $_GET['error']; ?></p>
+                        <?php } ?>
+                        
                         <div>
                             <span>
                                 <label for="username">Username</label>

@@ -1,3 +1,13 @@
+<?php
+session_start();
+
+include('connection.php');
+
+
+if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -70,7 +80,7 @@
             </div>
         </section>
         <div class="logout-button">
-            <a href="">Log out</a>
+            <a href="logout.php"><button>Log out</button></a>
         </div>
     </div>
 
@@ -132,3 +142,12 @@
 </script>
 </body>
 </html>
+
+
+<?php
+
+} else {
+    header("Location: login.php");
+    exit();
+}
+?>
