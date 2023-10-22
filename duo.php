@@ -3,7 +3,7 @@ session_start();
 
 include('connection.php');
 
-if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
+if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
 
 ?>

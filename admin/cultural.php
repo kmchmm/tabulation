@@ -31,7 +31,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 </div>
                 <ul class="justify-center admin-ul">
                     <li>
-                        <a href="cultural.php">Cultural Night Tabulation</a>
+                        <a href="">Cultural Night Tabulation</a>
                     </li>
                     <li>
                         <a href="ms.php">Mr. & Ms. CCS</a>
@@ -41,8 +41,32 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         </header>
 
         <section class="">
-            <div class="main-body justify-center align-center">
-                <h1>Admin Tabulation</h1>
+            <div class="main-body">
+                <h1>Cultural Night Tabulation</h1>
+                <table id="applicants">
+                    <tr>
+                        <th>House Name</th>
+                        <th>Wanna Bee</th>
+                        <th>Spoken Poetry</th>
+                        <th>Acoustic Band</th>
+                        <th>Duo</th>
+                        <th>Solo</th>
+                        <th>Video Montage</th>
+                    </tr>
+
+                    <tr>
+                        <td class="applicant_name" style="display: none;"></td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+
+                    </tr>
+
+                </table>
             </div>
         </section>
         <div class="logout-button">

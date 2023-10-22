@@ -21,7 +21,7 @@
                 </div>
                 <div>
                     <form action="loginaccess.php" method="post">
-                        <h1>Tabulation: Cultural and Mr. & Miss</h1>
+                        <h1>Mr. & Miss CCS and Cultural Night</h1>
                         
                         <?php if (isset($_GET['error'])) { ?>
                             <p class="error"><?php echo $_GET['error']; ?></p>

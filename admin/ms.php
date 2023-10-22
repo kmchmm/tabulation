@@ -34,15 +34,45 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <a href="cultural.php">Cultural Night Tabulation</a>
                     </li>
                     <li>
-                        <a href="ms.php">Mr. & Ms. CCS</a>
+                        <a href="">Mr. & Ms. CCS</a>
                     </li>
                 </ul>
             </nav>
         </header>
 
         <section class="">
-            <div class="main-body justify-center align-center">
-                <h1>Admin Tabulation</h1>
+            <div class="main-body">
+                <h1>Mr. & Ms. CCS Tabulation</h1>
+                <table id="applicants">
+                    <tr>
+                        <th>House Name</th>
+                        <th>Production Number</th>
+                        <th>School Uniform</th>
+                        <th>Futuristic Attire</th>
+                        <th>Formal Attire</th>
+                        <th>Q and A</th>
+                        <th>Popularity</th>
+                        <th>Personality</th>
+                        <th>Photogenic</th>
+                        <th>Total</th>
+                    </tr>
+
+                    <tr>
+                        <td class="applicant_name" style="display: none;"></td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+
+                    </tr>
+
+                </table>
             </div>
         </section>
         <div class="logout-button">
