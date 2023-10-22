@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+include('connection.php');
+
+if (isset($_SESSION['id']) && isset($_SESSION['user_name'])) {
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -131,3 +140,12 @@
 </script>
 </body>
 </html>
+
+
+<?php
+
+} else {
+    header("Location: login.php");
+    exit();
+}
+?>
