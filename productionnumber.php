@@ -61,25 +61,21 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 <h1>Production Number Tabulation</h1>
                 <table id="applicants">
                     <tr>
-                        <th>House Name</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>Contestant Name</th>
+                        <th>Voice and Diction</th>
+                        <th>Dance</th>
+                        <th>Presence</th>
+                        <th>Confidence and Walk</th>
+                        <th>Total</th>
                     </tr>
 
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
                         <td>Sample</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="text" placeholder="Enter Total"></td>
+                        <td><input type="text" placeholder="Enter Total"></td>
+                        <td><input type="text" placeholder="Enter Total"></td>
+                        <td><input type="text" placeholder="Enter Total"></td>
                         <td></td>
                     </tr>
 

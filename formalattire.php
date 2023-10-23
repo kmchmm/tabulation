@@ -61,25 +61,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 <h1>Formal Attire Tabulation</h1>
                 <table id="applicants">
                     <tr>
-                        <th>House Name</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th>Contestant Name</th>
+                        <th>Poise and Posture</th>
+                        <th>Confidence and Walk</th>
+                        <th>Overall Look</th>
+                        <th>Total</th>
                     </tr>
 
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
                         <td>Sample</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
+                        <td><input type="text" placeholder="Enter Total"></td>
+                        <td><input type="text" placeholder="Enter Total"></td>
+                        <td><input type="text" placeholder="Enter Total"></td>
                         <td></td>
                     </tr>
 

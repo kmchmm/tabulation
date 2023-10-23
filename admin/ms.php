@@ -45,7 +45,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 <h1>Mr. & Ms. CCS Tabulation</h1>
                 <table id="applicants">
                     <tr>
-                        <th>House Name</th>
+                        <th>Contestant Name</th>
                         <th>Production Number</th>
                         <th>School Uniform</th>
                         <th>Futuristic Attire</th>
