@@ -75,8 +75,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <td>Sample</td>
                         <td>
                             <div class="table-buttons">
-                                <button>Add</button>
-                                <button>Edit</button>
+                                <button>ADD</button>
+                                <button>EDIT</button>
                             </div>
                         </td>
                     </tr>

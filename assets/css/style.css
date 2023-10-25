@@ -245,11 +245,18 @@ table td{
     background-color: var(--first-font-color);
 }
 .table-buttons button{
-    background-color: var(--darkgray);
+    background-color: #2a333c;
     color: #ffffff;
-    padding: 10px;
+    padding: 10px 15px;
+    border: none;
+    font-family: var(--main-font-family);
+    font-weight: 700;
+    letter-spacing: 3px;
+    cursor: pointer;
 }
-
+.table-buttons button:last-child{
+    background-color: #054cb8;
+}
 
 .logout-button button{
     margin: 1em 0 0 2em;
