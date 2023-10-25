@@ -77,8 +77,23 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <td>Sample</td>
                         <td>
                             <div class="table-buttons">
-                                <button>ADD</button>
-                                <button>EDIT</button>
+                                <button id="addBtn">ADD</button>
+
+                                    <div id="myModal" class="modal">
+                                        <div class="modal-content">
+                                            <div>
+                                                <span class="close">&times;</span>
+                                                <h1>Question and Answer Tabulation</h1>
+                                            </div>
+                                            <div>
+                                                <form class=" add-form" method="POST" action="" enctype="multipart/form-data">
+
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                               <button>EDIT</button>
                             </div>
                         </td>
                     </tr>
@@ -90,6 +105,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             <a href="logout.php"><button>Log out</button></a>
         </div>
     </div>
+
+    <script src="assets/js/script.js"></script>
 
      <script>
     const selectElement = document.getElementById("eventSelect");
