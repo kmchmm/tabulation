@@ -66,17 +66,22 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <th>Dance</th>
                         <th>Presence</th>
                         <th>Confidence and Walk</th>
-                        <th>Total</th>
+                        <th>Actions</th>
                     </tr>
 
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
                         <td>Sample</td>
-                        <td><input type="text" placeholder="Enter Total"></td>
-                        <td><input type="text" placeholder="Enter Total"></td>
-                        <td><input type="text" placeholder="Enter Total"></td>
-                        <td><input type="text" placeholder="Enter Total"></td>
-                        <td></td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>Sample</td>
+                        <td>
+                            <div class="table-buttons">
+                                <button>Add</button>
+                                <button>Edit</button>
+                            </div>
+                        </td>
                     </tr>
 
                 </table>

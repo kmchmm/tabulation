@@ -65,7 +65,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <th>Choreography</th>
                         <th>Execution <br> (Timing & Coordination, Projection & Expression)</th>
                         <th>Costume and Props</th>
-
+                        <th>Actions</th>
                     </tr>
 
                     <tr>
@@ -74,6 +74,12 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <td>Sample</td>
                         <td>Sample</td>
                         <td>Sample</td>
+                        <td>
+                            <div class="table-buttons">
+                                <button>Add</button>
+                                <button>Edit</button>
+                            </div>
+                        </td>
                     </tr>
 
                 </table>
