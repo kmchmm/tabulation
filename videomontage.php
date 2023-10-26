@@ -87,7 +87,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                             </div>
                                             <div>
                                                 <form class=" add-form" method="POST" action="" enctype="multipart/form-data">
-
+                                                    <div class="form-handler">
+                                                        <div>
+                                                            <label for="">House Name</label><br>
+                                                            <input type="text" name="vm1" id="vm1">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Content</label><br>
+                                                            <input type="text" name="vm2" id="vm2">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Creativity</label><br>
+                                                            <input type="text" name="vm3" id="vm3">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Editing Quality</label><br>
+                                                            <input type="text" name="vm4" id="vm4">
+                                                        </div>
+                                                    </div>
+                                                    <div class="justify-end">
+                                                        <button name="vmSave">Save</button>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>

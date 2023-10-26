@@ -88,7 +88,30 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                             </div>
                                             <div>
                                                 <form class=" add-form" method="POST" action="" enctype="multipart/form-data">
-
+                                                    <div class="form-handler">
+                                                        <div>
+                                                            <label for="">Contestant Name</label><br>
+                                                            <input type="text" name="pn1" id="pn1">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Voice and Diction</label><br>
+                                                            <input type="text" name="pn2" id="pn2">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Dance</label><br>
+                                                            <input type="text" name="pn3" id="pn3">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Presence</label><br>
+                                                            <input type="text" name="pn4" id="pn4">
+                                                        </div>                                                        <div>
+                                                            <label for="">Confidence and Walk</label><br>
+                                                            <input type="text" name="pn5" id="pn5">
+                                                        </div>
+                                                    </div>
+                                                    <div class="justify-end">
+                                                        <button name="pnSave">Save</button>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>

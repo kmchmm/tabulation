@@ -14,6 +14,7 @@
 }
 body{
     font-family: var(--main-font-family);
+    overflow-x: hidden;
 }
 
 a{
@@ -224,6 +225,9 @@ select {
     text-align: center;
 }
 
+.cultural-night h2{
+    margin: 1em 0;
+}
 
 table td{
     white-space: nowrap;
@@ -233,10 +237,12 @@ table td{
 }
   
 #applicants td, #applicants th {
-    border: 1px solid #ddd;
+    border: 1px solid #7e7e7e;
     padding: 8px;
 }
-  
+#applicants td{
+    padding: 15px 0;
+}
 #applicants tr:nth-child(even){
     background-color: var(--secondary-font-color);
 }
@@ -282,11 +288,30 @@ table td{
     padding: 20px;
     border: 1px solid #888;
     width: 50%;
+    text-align: left;
 }
 .modal-content h1{
     color: #2a333c;
     font-size: 2em;
 }
+.form-handler div{
+    margin-bottom: 1em;
+    display: block;
+}
+
+.add-form div label{
+    font-weight: 700;
+    width: 100%;
+}
+.add-form input{   
+    width: 100%;
+    padding: 10px 15px;
+    font-family: var(--main-font-family);
+}
+.add-form input:focus{
+    outline: none;
+}
+
   /* The Close Button */
 .close{
     color: #aaaaaa;
@@ -320,6 +345,7 @@ table td{
 } 
 
 
+
 /*************************/
 /*******Admin side*********/
 /*************************/
@@ -332,3 +358,5 @@ table td{
 .admin-ul li a:hover{
     background-color: #2a333c;
 }
+
+

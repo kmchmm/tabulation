@@ -60,6 +60,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             <div class="main-body">
                 <h1>Wanna Bee Tabulation</h1>
                 <table id="applicants">
+                <?php
+
+                        $query = "SELECT * FROM wannabee";
+                        $query_run = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($query_run) > 0) {
+                            while ($row = mysqli_fetch_assoc($query_run)) {
+                ?>
                     <tr>
                         <th>House Name</th>
                         <th>Choreography</th>
@@ -70,23 +77,49 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
+                        <td><?php echo $row['housename'] ?></td>
+                        <td><?php echo $row['choreography'] ?></td>
+                        <td><?php echo $row['execution'] ?></td>
+                        <td><?php echo $row['costume'] ?></td>
                         <td>
                             <div class="table-buttons">
-                                <button id="addBtn">ADD</button>
+                                <button onclick="showModal(<?php echo $row['id'] ?>)">ADD</button>
 
-                                    <div id="myModal" class="modal">
+                                    <div id="myModal<?php echo $row['id'] ?>" class="modal">
                                         <div class="modal-content">
                                             <div>
-                                                <span class="close">&times;</span>
+                                                <span class="close" onclick="closeModal(<?php echo $row['id'] ?>)">&times;</span>                                                
                                                 <h1>Wanna Bee Tabulation</h1>
                                             </div>
                                             <div>
-                                                <form class=" add-form" method="POST" action="" enctype="multipart/form-data">
-
+                                                <form class="add-form" method="POST" action="actions.php" enctype="multipart/form-data">
+                                                    <div class="form-handler">
+                                                        <div>
+                                                            <input type="hidden" name="wbID" id="wbID" value="<?php echo $row['id'] ?>">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">House Name</label><br>
+                                                            <input type="text" name="wb1" id="wb1" value="<?php echo $row['housename'] ?>" readonly>
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Choreography</label><br>
+                                                            <input type="number" name="wb2" id="wb2">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Execution</label><br>
+                                                            <input type="number" name="wb3" id="wb3">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Costume and Props</label><br>
+                                                            <input type="number" name="wb4" id="wb4">
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="wbTotal" id="wbTotal" value="<?php echo $row['Total'] ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="justify-end">
+                                                        <button name="wbSave">Save</button>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
@@ -96,7 +129,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                             </div>
                         </td>
                     </tr>
-
+                    <?php
+                        }
+                    }
+                    ?>
                 </table>
             </div>
         </section>
@@ -162,6 +198,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         }
     });
     selectElement1.selectedIndex = 0;
+</script>
+
+<script>
+    
+    function showModal(modalId) {
+        var modal = document.getElementById("myModal" + modalId);
+        modal.style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        var modal = document.getElementById("myModal" + modalId);
+        modal.style.display = "none";
+    }
 </script>
 </body>
 </html>

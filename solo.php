@@ -85,7 +85,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                             </div>
                                             <div>
                                                 <form class=" add-form" method="POST" action="" enctype="multipart/form-data">
-
+                                                    <div class="form-handler">
+                                                        <div>
+                                                            <label for="">House Name</label><br>
+                                                            <input type="text" name="solo1" id="solo1">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Vocals</label><br>
+                                                            <input type="text" name="solo2" id="solo2">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Expression</label><br>
+                                                            <input type="text" name="solo3" id="solo3">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Showmanship</label><br>
+                                                            <input type="text" name="solo4" id="solo4">
+                                                        </div>
+                                                    </div>
+                                                    <div class="justify-end">
+                                                        <button name="soloSave">Save</button>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>

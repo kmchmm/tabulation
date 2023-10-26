@@ -41,30 +41,54 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         </header>
 
         <section class="">
-            <div class="main-body">
+            <div class="main-body cultural-night">
                 <h1>Cultural Night Tabulation</h1>
                 <table id="applicants">
+                    <h2>Wanna Bee</h2>
                     <tr>
                         <th>House Name</th>
-                        <th>Wanna Bee</th>
-                        <th>Spoken Poetry</th>
-                        <th>Acoustic Band</th>
-                        <th>Duo</th>
-                        <th>Solo</th>
-                        <th>Video Montage</th>
-                    </tr>
+                        <th>Total</th>
+                    <?php
 
+                        $wbQuery = "SELECT * FROM wannabee";
+                        $wbQuery_run = mysqli_query($conn, $wbQuery);
+                        if (mysqli_num_rows($wbQuery_run) > 0) {
+                            while ($wbRow = mysqli_fetch_assoc($wbQuery_run)) {
+                    ?>
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-
+                        <td><?php echo $wbRow['housename'] ?></td>
+                        <td><?php echo $wbRow['Total'] ?></td>
                     </tr>
+
+                    <?php
+                            }
+                        }
+                    ?>
+
+                </table>
+                <table id="applicants">
+                    <h2>Spoken Poetry</h2>
+                    <tr>
+                        <th>House Name</th>
+                        <th>Total</th>
+                    <?php
+
+                        $spokenQuery = "SELECT * FROM spoken";
+                        $spokenQuery_run = mysqli_query($conn, $spokenQuery);
+                        if (mysqli_num_rows($spokenQuery_run) > 0) {
+                            while ($spokenRow = mysqli_fetch_assoc($spokenQuery_run)) {
+                    ?>
+                    <tr>
+                        <td class="applicant_name" style="display: none;"></td>
+                        <td><?php echo $spokenRow['housename'] ?></td>
+                        <td><?php echo $spokenRow['total'] ?></td>
+                    </tr>
+
+                    <?php
+                            }
+                        }
+                    ?>
 
                 </table>
             </div>

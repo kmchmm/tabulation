@@ -87,7 +87,31 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                             </div>
                                             <div>
                                                 <form class=" add-form" method="POST" action="" enctype="multipart/form-data">
-
+                                                    <div class="form-handler">
+                                                        <div>
+                                                            <label for="">Contestant Name</label><br>
+                                                            <input type="text" name="qa1" id="qa1">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Voice and Diction</label><br>
+                                                            <input type="text" name="qa2" id="qa2">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Content</label><br>
+                                                            <input type="text" name="qa3" id="qa3">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Confidence</label><br>
+                                                            <input type="text" name="qa4" id="qa4">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Audience Impact</label><br>
+                                                            <input type="text" name="qa5" id="qa5">
+                                                        </div>
+                                                    </div>
+                                                    <div class="justify-end">
+                                                        <button name="qaSave">Save</button>
+                                                    </div>
                                                 </form>
                                             </div>
                                         </div>
