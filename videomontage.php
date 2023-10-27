@@ -60,6 +60,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             <div class="main-body">
                 <h1>Video Montage Tabulation</h1>
                 <table id="applicants">
+                <?php
+
+                    $query = "SELECT * FROM videomontage";
+                    $query_run = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        while ($row = mysqli_fetch_assoc($query_run)) {
+                ?>
                     <tr>
                         <th>House Name</th>
                         <th>Content</th>
@@ -71,38 +78,44 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
+                        <td><?php echo $row['housename'] ?></td>
+                        <td><?php echo $row['content'] ?></td>
+                        <td><?php echo $row['creativity'] ?></td>
+                        <td><?php echo $row['editingquality'] ?></td>
                         <td>
                             <div class="table-buttons">
-                                <button id="addBtn">ADD</button>
+                                <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT SCORE</button>
 
-                                    <div id="myModal" class="modal">
+                                    <div id="myModal<?php echo $row['id'] ?>" class="modal">
                                         <div class="modal-content">
                                             <div>
-                                                <span class="close">&times;</span>
+                                                <span class="close" onclick="closeModal(<?php echo $row['id'] ?>)">&times;</span>                                                
                                                 <h1>Video Montage Tabulation</h1>
                                             </div>
                                             <div>
-                                                <form class=" add-form" method="POST" action="" enctype="multipart/form-data">
+                                                <form class=" add-form" method="POST" action="actions.php" enctype="multipart/form-data">
                                                     <div class="form-handler">
                                                         <div>
+                                                            <input type="hidden" name="vmID" id="vmID" value="<?php echo $row['id'] ?>">
+                                                        </div>
+                                                        <div>
                                                             <label for="">House Name</label><br>
-                                                            <input type="text" name="vm1" id="vm1">
+                                                            <input type="text" name="vm1" id="vm1" value="<?php echo $row['housename'] ?>" readonly>
                                                         </div>
                                                         <div>
                                                             <label for="">Content</label><br>
-                                                            <input type="text" name="vm2" id="vm2">
+                                                            <input type="number" name="vm2" id="vm2">
                                                         </div>
                                                         <div>
                                                             <label for="">Creativity</label><br>
-                                                            <input type="text" name="vm3" id="vm3">
+                                                            <input type="number" name="vm3" id="vm3">
                                                         </div>
                                                         <div>
                                                             <label for="">Editing Quality</label><br>
-                                                            <input type="text" name="vm4" id="vm4">
+                                                            <input type="number" name="vm4" id="vm4">
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="vmTotal" id="vmTotal" value="<?php echo $row['total'] ?>">
                                                         </div>
                                                     </div>
                                                     <div class="justify-end">
@@ -113,11 +126,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         </div>
                                     </div>
 
-                                <button>EDIT</button>
                             </div>
                         </td>
                     </tr>
-
+                    <?php
+                        }
+                    }
+                    ?>
                 </table>
             </div>
         </section>
@@ -184,6 +199,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         }
     });
     selectElement1.selectedIndex = 0;
+</script>
+<script>
+    
+    function showModal(modalId) {
+        var modal = document.getElementById("myModal" + modalId);
+        modal.style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        var modal = document.getElementById("myModal" + modalId);
+        modal.style.display = "none";
+    }
 </script>
 </body>
 </html>

@@ -237,7 +237,7 @@ table td{
 }
   
 #applicants td, #applicants th {
-    border: 1px solid #7e7e7e;
+    border: 1px solid #bebebe;
     padding: 8px;
 }
 #applicants td{
@@ -251,7 +251,7 @@ table td{
     background-color: var(--first-font-color);
 }
 .table-buttons button{
-    background-color: #2a333c;
+    background-color: #054cb8;
     color: #ffffff;
     padding: 10px 15px;
     border: none;
@@ -260,10 +260,6 @@ table td{
     letter-spacing: 3px;
     cursor: pointer;
 }
-.table-buttons button:last-child{
-    background-color: #054cb8;
-}
-
 /***********************************/
 /***************MODAL***************/
 /***********************************/

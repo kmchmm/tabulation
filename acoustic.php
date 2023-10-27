@@ -83,7 +83,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <td><?php echo $row['showmanship'] ?></td>
                         <td>
                             <div class="table-buttons">
-                                <button onclick="showModal(<?php echo $row['id'] ?>)">ADD</button>
+                                <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT SCORE</button>
 
                                 <div id="myModal<?php echo $row['id'] ?>" class="modal">
                                     <div class="modal-content">
@@ -92,7 +92,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                             <h1>Acoustic Tabulation</h1>
                                         </div>
                                         <div>
-                                            <form class=" add-form" method="POST" action="" enctype="multipart/form-data">
+                                            <form class=" add-form" method="POST" action="actions.php" enctype="multipart/form-data">
                                                 <div class="form-handler">
                                                         <div>
                                                             <input type="hidden" name="acID" id="acID" value="<?php echo $row['id'] ?>">
@@ -124,8 +124,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         </div>
                                     </div>
                                 </div>
-
-                                <button>EDIT</button>
 
                             </div>
                         </td>

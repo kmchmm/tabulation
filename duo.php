@@ -59,6 +59,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             <div class="main-body">
                 <h1>Duo Tabulation</h1>
                 <table id="applicants">
+
+                <?php
+
+                    $query = "SELECT * FROM duo";
+                    $query_run = mysqli_query($conn, $query);
+                    if (mysqli_num_rows($query_run) > 0) {
+                        while ($row = mysqli_fetch_assoc($query_run)) {
+                ?>
                     <tr>
                         <th>House Name</th>
                         <th>Vocals</th>
@@ -69,38 +77,44 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
+                        <td><?php echo $row['housename'] ?></td>
+                        <td><?php echo $row['vocals'] ?></td>
+                        <td><?php echo $row['expression'] ?></td>
+                        <td><?php echo $row['showmanship'] ?></td>
                         <td>
                             <div class="table-buttons">
-                                <button id="addBtn">ADD</button>
+                                <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT SCORE</button>
 
-                                    <div id="myModal" class="modal">
+                                    <div id="myModal<?php echo $row['id'] ?>" class="modal">
                                         <div class="modal-content">
                                             <div>
-                                                <span class="close">&times;</span>
+                                                <span class="close" onclick="closeModal(<?php echo $row['id'] ?>)">&times;</span>                                                
                                                 <h1>Duo Tabulation</h1>
                                             </div>
                                             <div>
-                                                <form class=" add-form" method="POST" action="" enctype="multipart/form-data">
+                                                <form class=" add-form" method="POST" action="actions.php" enctype="multipart/form-data">
                                                     <div class="form-handler">
                                                         <div>
+                                                            <input type="hidden" name="duoID" id="duoID" value="<?php echo $row['id'] ?>">
+                                                        </div>
+                                                        <div>
                                                             <label for="">House Name</label><br>
-                                                            <input type="text" name="d1" id="d1">
+                                                            <input type="text" name="d1" id="d1" value="<?php echo $row['housename'] ?>" readonly>
                                                         </div>
                                                         <div>
                                                             <label for="">Vocals</label><br>
-                                                            <input type="text" name="d2" id="d2">
+                                                            <input type="number" name="d2" id="d2">
                                                         </div>
                                                         <div>
                                                             <label for="">Expression</label><br>
-                                                            <input type="text" name="d3" id="d3">
+                                                            <input type="number" name="d3" id="d3">
                                                         </div>
                                                         <div>
                                                             <label for="">Showmanship</label><br>
-                                                            <input type="text" name="d4" id="d4">
+                                                            <input type="number" name="d4" id="d4">
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="duoTotal" id="duoTotal" value="<?php echo $row['total'] ?>">
                                                         </div>
                                                     </div>
                                                     <div class="justify-end">
@@ -111,11 +125,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         </div>
                                     </div>
 
-                                <button>EDIT</button>
                             </div>
                         </td>
                     </tr>
-
+                    <?php
+                        }
+                    }
+                    ?>
                 </table>
             </div>
         </section>
@@ -181,6 +197,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         }
     });
     selectElement1.selectedIndex = 0;
+</script>
+<script>
+    
+    function showModal(modalId) {
+        var modal = document.getElementById("myModal" + modalId);
+        modal.style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        var modal = document.getElementById("myModal" + modalId);
+        modal.style.display = "none";
+    }
 </script>
 </body>
 </html>

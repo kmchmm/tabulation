@@ -83,7 +83,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <td><?php echo $row['costume'] ?></td>
                         <td>
                             <div class="table-buttons">
-                                <button onclick="showModal(<?php echo $row['id'] ?>)">ADD</button>
+                                <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT SCORE</button>
 
                                     <div id="myModal<?php echo $row['id'] ?>" class="modal">
                                         <div class="modal-content">
@@ -125,7 +125,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         </div>
                                     </div>
 
-                                <button>EDIT</button>
                             </div>
                         </td>
                     </tr>
