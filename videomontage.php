@@ -58,24 +58,28 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
         <section class="">
             <div class="main-body">
-                <h1>Video Montage Tabulation</h1>
+                <h1>Video Montage</h1>
+                <div id="success-message" class="success">
+                    <?php if (isset($_GET['success'])) { ?>
+                        <p><?php echo htmlspecialchars($_GET['success']); ?></p>
+                    <?php } ?>
+                </div>
                 <table id="applicants">
-                <?php
-
-                    $query = "SELECT * FROM videomontage";
-                    $query_run = mysqli_query($conn, $query);
-                    if (mysqli_num_rows($query_run) > 0) {
-                        while ($row = mysqli_fetch_assoc($query_run)) {
-                ?>
                     <tr>
                         <th>House Name</th>
-                        <th>Content</th>
-                        <th>Creativity</th>
-                        <th>Editing Quality</th>
+                        <th>Content <br> 40%</th>
+                        <th>Creativity <br> 30%</th>
+                        <th>Editing Quality <br> 30%</th>
                         <th>Actions</th>
 
                     </tr>
+                    <?php
 
+                        $query = "SELECT * FROM videomontage";
+                        $query_run = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($query_run) > 0) {
+                            while ($row = mysqli_fetch_assoc($query_run)) {
+                    ?>
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
                         <td><?php echo $row['housename'] ?></td>
@@ -211,6 +215,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         var modal = document.getElementById("myModal" + modalId);
         modal.style.display = "none";
     }
+</script>
+<script type="text/javascript">
+        // Function to hide the success message after a certain duration
+        function hideSuccessMessage() {
+            var successMessage = document.getElementById("success-message");
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        }
+
+        // Call the hideSuccessMessage function after a delay of 5 seconds (5000 milliseconds)
+        setTimeout(hideSuccessMessage, 5000);
 </script>
 </body>
 </html>

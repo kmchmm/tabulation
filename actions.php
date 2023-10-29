@@ -24,9 +24,7 @@ if(isset($_POST['wbSave'])){
     $wb = "UPDATE wannabee SET housename='$wbhouseName',choreography='$wbchoreography', execution='$wbexecution',costume='$wbcostume', Total ='$wbTotal' WHERE id = '$wbid'" ;
     $wb_run = mysqli_query($conn,$wb);
 
-    $_SESSION['success'] = "Information Updated!";
-    header('Location: wannabee.php');
-
+    header('Location: wannabee.php?success=Information Updated!');
 
 }
 
@@ -58,9 +56,7 @@ if(isset($_POST['spokenSave'])){
     $spoken = "UPDATE spoken SET housename='$spokenhouseName',content='$spokenContent', voice='$spokenVoice',clarity='$spokenClarity', facial ='$spokenFacial', memorization ='$spokenMemorization',impact ='$spokenImpact', total='$spokenTotal' WHERE id = '$spokenid'" ;
     $spoken_run = mysqli_query($conn,$spoken);
 
-    $_SESSION['success'] = "Information Updated!";
-    header('Location: spoken.php');
-
+    header('Location: spoken.php?success=Information Updated!');
 
 }
 /////////////////////////
@@ -79,14 +75,12 @@ if(isset($_POST['abSave'])){
     $acVocal = $acVocal * .5;
     $acExpression = $acExpression * .3;
     $acShowmanship = $acShowmanship * .2;
-    $duoTotal = $acVocal + $acExpression + $acShowmanship;
+    $acTotal = $acVocal + $acExpression + $acShowmanship;
 
     $ac = "UPDATE acoustic SET housename='$achouseName',vocals='$acVocal', expression='$acExpression',showmanship='$acShowmanship', total ='$acTotal' WHERE id = '$acid'" ;
     $ac_run = mysqli_query($conn,$ac);
 
-    $_SESSION['success'] = "Information Updated!";
-    header('Location: acoustic.php');
-
+    header('Location: acoustic.php?success=Information Updated!');
 
 }
 
@@ -111,9 +105,7 @@ if(isset($_POST['dSave'])){
     $d = "UPDATE duo SET housename='$duohouseName',vocals='$duoVocal', expression='$duoExpression',showmanship='$duoShowmanship', total ='$duoTotal' WHERE id = '$duoid'" ;
     $d_run = mysqli_query($conn,$d);
 
-    $_SESSION['success'] = "Information Updated!";
-    header('Location: duo.php');
-
+    header('Location: duo.php?success=Information Updated!');
 
 }
 /////////////////////////
@@ -137,9 +129,7 @@ if(isset($_POST['soloSave'])){
     $solo = "UPDATE solo SET housename='$solohouseName',vocals='$soloVocal', expression='$soloExpression',showmanship='$soloShowmanship', total ='$soloTotal' WHERE id = '$soloid'" ;
     $solo_run = mysqli_query($conn,$solo);
 
-    $_SESSION['success'] = "Information Updated!";
-    header('Location: solo.php');
-
+    header('Location: solo.php?success=Information Updated!');
 
 }
 /////////////////////////
@@ -163,10 +153,9 @@ if(isset($_POST['vmSave'])){
     $vm = "UPDATE videomontage SET housename='$vmhouseName',content='$vmContent', creativity='$vmCreativity',editingquality='$vmQuality', total ='$vmTotal' WHERE id = '$vmid'" ;
     $vm_run = mysqli_query($conn,$vm);
 
-    $_SESSION['success'] = "Information Updated!";
-    header('Location: videomontage.php');
+    header('Location: videomontage.php?success=Information Updated!');
 
-
+}
 
 ///////////////////////////////////////////////
 /////////////////////MR & MS CCS///////////////
@@ -175,5 +164,115 @@ if(isset($_POST['vmSave'])){
 /////////////////////////
 ///production Number/////
 /////////////////////////
+if(isset($_POST['pnSave'])){
+
+    $pnid = $_POST['pnID'];
+    $pnNum = $_POST['pnNum'];
+    $pncontestantname = $_POST['pn1'];
+    $pnHousename = $_POST['pnHouse'];
+    $pnVoice = $_POST['pn2'];
+    $pnDance = $_POST['pn3'];
+    $pnPresence = $_POST['pn4'];
+    $pnConfidence = $_POST['pn5'];
+    $pnTotal = $_POST['pnTotal'];
+
+
+    $pnTotal = $pnVoice + $pnDance + $pnPresence + $pnConfidence;
+
+    $pn = "UPDATE production SET Contestantnum='$pnNum', contestantname='$pncontestantname',house='$pnHousename',voice='$pnVoice', dance='$pnDance',presence='$pnPresence', confidence='$pnConfidence', total ='$pnTotal' WHERE id = '$pnid'";
+    $pn_run = mysqli_query($conn,$pn);
+
+    header('Location: productionnumber.php?success=Information Updated!');
+}
+/////////////////////////
+///SCHOOL UNIFORM/////
+/////////////////////////
+if(isset($_POST['suSave'])){
+
+    $suID = $_POST['schoolID'];
+    $schoolNum = $_POST['schoolNum'];
+    $sucontestantname = $_POST['su1'];
+    $suHousename = $_POST['suHouse'];
+    $suPoise = $_POST['su2'];
+    $suConfidence = $_POST['su3'];
+    $suOverall = $_POST['su4'];
+    $suTotal = $_POST['suTotal'];
+
+
+    $suTotal = $suPoise + $suConfidence + $suOverall;
+
+    $su = "UPDATE school SET Contestantnum='$schoolNum', contestantname='$sucontestantname',house='$suHousename',poise='$suPoise', confidence='$suConfidence',overalllook='$suOverall', total ='$suTotal' WHERE id = '$suID'";
+    $su_run = mysqli_query($conn,$su);
+
+    header('Location: schooluniform.php?success=Information Updated!');
+}
+/////////////////////////
+///future attire/////
+/////////////////////////
+if(isset($_POST['futureSave'])){
+
+    $futureID = $_POST['futureID'];
+    $futureNum = $_POST['futureNum'];
+    $futurecontestantname = $_POST['future1'];
+    $futureHousename = $_POST['futureHouse'];
+    $futurePoise = $_POST['future2'];
+    $futureConfidence = $_POST['future3'];
+    $futureOverall = $_POST['future3'];
+    $futureTotal = $_POST['futureTotal'];
+
+
+    $futureTotal = $futurePoise + $futureConfidence + $futureOverall;
+
+    $future = "UPDATE future SET Contestantnum='$futureNum', contestantname='$futurecontestantname',house='$futureHousename',poise='$futurePoise', confidence='$futureConfidence',overalllook='$futureOverall', total ='$futureTotal' WHERE id = '$futureID'";
+    $future_run = mysqli_query($conn,$future);
+
+    header('Location: futureattire.php?success=Information Updated!');
+}
+/////////////////////////
+///formal attire/////
+/////////////////////////
+if(isset($_POST['formalSave'])){
+
+    $formalID = $_POST['formalID'];
+    $formalNum = $_POST['formalNum'];
+    $formalcontestantname = $_POST['formal1'];
+    $formalHousename = $_POST['formalHouse'];
+    $formalPoise = $_POST['formal2'];
+    $formalConfidence = $_POST['formal3'];
+    $formalOverall = $_POST['formal4'];
+    $formalTotal = $_POST['formalTotal'];
+
+
+    $formalTotal = $formalPoise + $formalConfidence + $formalOverall;
+
+    $formal = "UPDATE formal SET Contestantnum='$formalNum', contestantname='$formalcontestantname',house='$formalHousename',poise='$formalPoise', confidence='$formalConfidence',overalllook='$formalOverall', total ='$formalTotal' WHERE id = '$formalID'";
+    $formal_run = mysqli_query($conn,$formal);
+
+    header('Location: formalattire.php?success=Information Updated!');
+}
+
+
+/////////////////////////
+////////Q AND A//////////
+/////////////////////////
+if(isset($_POST['qaSave'])){
+
+    $qaID = $_POST['qaID'];
+    $qaNum = $_POST['qaNum'];
+    $qacontestantname = $_POST['qa1'];
+    $qaHousename = $_POST['qaHouse'];
+    $qaVoice = $_POST['qa2'];
+    $qaContent = $_POST['qa3'];
+    $qaConfidence = $_POST['qa4'];
+    $qaAudience = $_POST['qa5'];
+    $qaTotal = $_POST['qaTotal'];
+
+
+    $qaTotal = $qaVoice + $qaContent + $qaConfidence + $qaAudience;
+
+    $qa = "UPDATE qa SET Contestantnum='$qaNum', contestantname='$qacontestantname',house='$qaHousename',voice='$qaVoice', content='$qaContent',confidence='$qaConfidence', audience='$qaAudience', total ='$qaTotal' WHERE id = '$qaID'";
+    $qa_run = mysqli_query($conn,$qa);
+
+    header('Location: QA.php?success=Information Updated!');
 }
 ?>

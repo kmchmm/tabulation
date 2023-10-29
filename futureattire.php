@@ -58,50 +58,101 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
         <section class="">
             <div class="main-body">
-                <h1>Futuristic Attire Tabulation</h1>
+                <h1>Futuristic Attire</h1>
+                <div id="success-message" class="success">
+                    <?php if (isset($_GET['success'])) { ?>
+                        <p><?php echo htmlspecialchars($_GET['success']); ?></p>
+                    <?php } ?>
+                </div>
                 <table id="applicants">
                     <tr>
+                        <th>Contestant<br>Gender & Number</th>
                         <th>Contestant Name</th>
-                        <th>Poise and Posture</th>
-                        <th>Confidence and Walk</th>
-                        <th>Overall Look</th>
+                        <th>House Name</th>
+                        <th>Poise and Posture <br> 5%</th>
+                        <th>Confidence and Walk <br> 5%</th>
+                        <th>Overall Look <br> 5%</th>
                         <th>Actions</th>
                     </tr>
+                    <?php
 
+                        $query = "SELECT * FROM future";
+                        $query_run = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($query_run) > 0) {
+                            while ($row = mysqli_fetch_assoc($query_run)) {
+                    ?>
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
+                        <td><?php echo $row['Contestantnum'] ?></td>
+                        <td><?php echo $row['contestantname'] ?></td>
+                        <td><?php echo $row['house'] ?></td>
+                        <td><?php echo $row['poise'] ?></td>
+                        <td><?php echo $row['confidence'] ?></td>
+                        <td><?php echo $row['overalllook'] ?></td>
                         <td>
                             <div class="table-buttons">
-                                <button id="addBtn">ADD</button>
+                                <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT SCORE</button>
 
-                                    <div id="myModal" class="modal">
+                                    <div id="myModal<?php echo $row['id'] ?>" class="modal">
                                         <div class="modal-content">
                                             <div>
-                                                <span class="close">&times;</span>
+                                                <span class="close" onclick="closeModal(<?php echo $row['id'] ?>)">&times;</span>                                                
                                                 <h1>Futuristic Attire Tabulation</h1>
                                             </div>
                                             <div>
-                                                <form class=" add-form" method="POST" action="" enctype="multipart/form-data">
+                                                <form class=" add-form" method="POST" action="actions.php" enctype="multipart/form-data">
                                                     <div class="form-handler">
                                                         <div>
+                                                            <label for="">Contestant Gender & Number</label> <br>
+                                                            <input type="text" name="futureNum" id="futureNum" value="<?php echo $row['Contestantnum'] ?>" readonly>
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="futureID" id="futureID" value="<?php echo $row['id'] ?>">
+                                                        </div>
+                                                        <div>
                                                             <label for="">Contestant Name</label><br>
-                                                            <input type="text" name="future1" id="future1">
+                                                            <input type="text" name="future1" id="future1" value="<?php echo $row['contestantname'] ?>" readonly>
                                                         </div>
                                                         <div>
-                                                            <label for="">Poise and Posture</label><br>
-                                                            <input type="text" name="future2" id="future2">
+                                                            <label for="">House Name</label><br>
+                                                            <input type="text" name="futureHouse" id="futureHouse" value="<?php echo $row['house'] ?>" readonly>
+                                                        </div>
+                                                        <div class="select-handler justify-between">
+                                                            <div>
+                                                                <label for="">Poise and Posture</label><br>
+                                                                <select name="future2" id="future2" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>                                                        
+                                                            <div>
+                                                                <label for="">Confidence and Walk</label><br>
+                                                                <select name="future3" id="future3" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="select-handler">
+                                                            <div>
+                                                                <label for="">Overall Look</label><br>
+                                                                <select name="future4" id="future4" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
                                                         </div>
                                                         <div>
-                                                            <label for="">Confidence and Walk</label><br>
-                                                            <input type="text" name="future3" id="future3">
-                                                        </div>
-                                                        <div>
-                                                            <label for="">Overall Look</label><br>
-                                                            <input type="text" name="future4" id="future4">
+                                                            <input type="hidden" name="futureTotal" id="futureTotal" value="<?php echo $row['total'] ?>">
                                                         </div>
                                                     </div>
                                                     <div class="justify-end">
@@ -112,11 +163,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         </div>
                                     </div>
 
-                                <button>EDIT</button>
                             </div>
                         </td>
                     </tr>
-
+                    <?php
+                        }
+                    }
+                    ?>
                 </table>
             </div>
         </section>
@@ -185,6 +238,31 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
     selectElement1.selectedIndex = 0;
 
+</script>
+<script>
+    
+    function showModal(modalId) {
+        var modal = document.getElementById("myModal" + modalId);
+        modal.style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        var modal = document.getElementById("myModal" + modalId);
+        modal.style.display = "none";
+    }
+</script>
+
+<script type="text/javascript">
+        // Function to hide the success message after a certain duration
+        function hideSuccessMessage() {
+            var successMessage = document.getElementById("success-message");
+            if (successMessage) {
+                successMessage.style.display = 'none';
+            }
+        }
+
+        // Call the hideSuccessMessage function after a delay of 5 seconds (5000 milliseconds)
+        setTimeout(hideSuccessMessage, 5000);
 </script>
 </body>
 </html>

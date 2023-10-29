@@ -43,35 +43,111 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <section class="">
             <div class="main-body">
                 <h1>Mr. & Ms. CCS Tabulation</h1>
-                <table id="applicants">
+                <table id="applicants" class="mr-ms">
+                <h2>Judge 1 Overall</h2>
                     <tr>
+                        <th>Contestant <br>Gender & Number</th>
                         <th>Contestant Name</th>
                         <th>Production Number</th>
                         <th>School Uniform</th>
                         <th>Futuristic Attire</th>
                         <th>Formal Attire</th>
                         <th>Q and A</th>
-                        <th>Popularity</th>
-                        <th>Personality</th>
-                        <th>Photogenic</th>
+                        <th>Total</th>
+                    </tr>
+                    <?php
+
+                        $query = "SELECT * FROM contestantname";
+                        $query_run = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($query_run) > 0) {
+                            while ($row = mysqli_fetch_assoc($query_run)) {
+                    ?>
+                    <tr>
+                        <td class="applicant_name" style="display: none;"></td>
+                        <td><?php echo $row['contestantnum']?></td>
+                        <td><?php echo $row['contestantname']?></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <?php
+                            }
+                        }
+                    ?> 
+                </table>
+                <table id="applicants" class="mr-ms">
+                <h2>Judge 2 Overall</h2>
+                    <tr>
+                        <th>Contestant <br>Gender & Number</th>
+                        <th>Contestant Name</th>
+                        <th>Production Number</th>
+                        <th>School Uniform</th>
+                        <th>Futuristic Attire</th>
+                        <th>Formal Attire</th>
+                        <th>Q and A</th>
                         <th>Total</th>
                     </tr>
 
+                    <?php
+
+                        $query = "SELECT * FROM contestantname";
+                        $query_run = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($query_run) > 0) {
+                            while ($row = mysqli_fetch_assoc($query_run)) {
+                    ?>
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-                        <td>Sample</td>
-
+                        <td><?php echo $row['contestantnum']?></td>
+                        <td><?php echo $row['contestantname']?></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
                     </tr>
+                    <?php
+                            }
+                        }
+                    ?> 
+                </table>
+                <table id="applicants" class="mr-ms">
+                <h2>Judge 3 Overall</h2>
+                    <tr>
+                        <th>Contestant <br>Gender & Number</th>
+                        <th>Contestant Name</th>
+                        <th>Production Number</th>
+                        <th>School Uniform</th>
+                        <th>Futuristic Attire</th>
+                        <th>Formal Attire</th>
+                        <th>Q and A</th>
+                        <th>Total</th>
+                    </tr>
+                    <?php
 
+                        $query = "SELECT * FROM contestantname";
+                        $query_run = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($query_run) > 0) {
+                            while ($row = mysqli_fetch_assoc($query_run)) {
+                    ?>
+                    <tr>
+                        <td class="applicant_name" style="display: none;"></td>
+                        <td><?php echo $row['contestantnum']?></td>
+                        <td><?php echo $row['contestantname']?></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <?php
+                            }
+                        }
+                    ?>   
                 </table>
             </div>
         </section>
