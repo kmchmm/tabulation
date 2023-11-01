@@ -40,6 +40,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             </nav>
         </header>
 
+
         <section class="">
             <div class="main-body cultural-night">
                 <h1>Cultural Night Tabulation</h1>
@@ -51,27 +52,56 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <th>Judge 2</th>
                         <th>Judge 3</th>
                         <th>Total</th>
-                    <?php
+                        <?php
 
-                        $wbQuery = "SELECT * FROM wannabee";
-                        $wbQuery_run = mysqli_query($conn, $wbQuery);
-                        if (mysqli_num_rows($wbQuery_run) > 0) {
-                            while ($wbRow = mysqli_fetch_assoc($wbQuery_run)) {
-                    ?>
-                    <tr>
-                        <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $wbRow['housename'] ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><?php echo $wbRow['Total'] ?></td>
-                    </tr>
+                            $judges = ['judge1', 'judge2', 'judge3'];
+                            $judgeData = array();
 
-                    <?php
+                            // Retrieve data for each judge
+                            foreach ($judges as $judge) {
+                                $sql = "SELECT judgename, housename, Total FROM wannabee WHERE judgename = '$judge'";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $judgeData[$judge][] = $row;
+                                    }
+                                }
                             }
-                        }
-                    ?>
 
+                                // Find the maximum number of rows among the judges' data
+                                $maxRows = max(array_map('count', $judgeData));
+
+                                for ($i = 0; $i < $maxRows; $i++) {
+                                    echo "<tr>";
+
+                                    // Display the housename in the first column
+                                    if (isset($judgeData['judge1'][$i])) {
+                                        echo "<td>{$judgeData['judge1'][$i]['housename']}</td>";
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+
+                                    // Initialize the total score for this row
+                                    $totalScore = 0;
+
+                                    // Display the data for each judge and calculate the row's total score
+                                    foreach ($judges as $judge) {
+                                        if (isset($judgeData[$judge][$i])) {
+                                            $score = (int)$judgeData[$judge][$i]['Total'];
+                                            $totalScore += $score / 3; // Add the judge's score to the total score
+                                            echo "<td>{$score}</td>";
+                                        } else {
+                                            echo "<td>No Data</td>";
+                                        }
+                                    }
+
+                                    // Display the row's total score in the last column
+                                    echo "<td>{$totalScore}</td>";
+
+                                    echo "</tr>";
+                                }
+                            ?>
                 </table>
                 <table id="applicants">
                     <h2>Spoken Poetry Overall</h2>
@@ -81,26 +111,56 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <th>Judge 2</th>
                         <th>Judge 3</th>
                         <th>Total</th>
-                    <?php
+                        <?php
 
-                        $spokenQuery = "SELECT * FROM spoken";
-                        $spokenQuery_run = mysqli_query($conn, $spokenQuery);
-                        if (mysqli_num_rows($spokenQuery_run) > 0) {
-                            while ($spokenRow = mysqli_fetch_assoc($spokenQuery_run)) {
-                    ?>
-                    <tr>
-                        <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $spokenRow['housename'] ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><?php echo $spokenRow['total'] ?></td>
-                    </tr>
+                            $judges = ['judge1', 'judge2', 'judge3'];
+                            $judgeData = array();
 
-                    <?php
+                            // Retrieve data for each judge
+                            foreach ($judges as $judge) {
+                                $sql = "SELECT judgename, housename, total FROM spoken WHERE judgename = '$judge'";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $judgeData[$judge][] = $row;
+                                    }
+                                }
                             }
-                        }
-                    ?>
+
+                                // Find the maximum number of rows among the judges' data
+                                $maxRows = max(array_map('count', $judgeData));
+
+                                for ($i = 0; $i < $maxRows; $i++) {
+                                    echo "<tr>";
+
+                                    // Display the housename in the first column
+                                    if (isset($judgeData['judge1'][$i])) {
+                                        echo "<td>{$judgeData['judge1'][$i]['housename']}</td>";
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+
+                                    // Initialize the total score for this row
+                                    $totalScore = 0;
+
+                                    // Display the data for each judge and calculate the row's total score
+                                    foreach ($judges as $judge) {
+                                        if (isset($judgeData[$judge][$i])) {
+                                            $score = (int)$judgeData[$judge][$i]['total'];
+                                            $totalScore += $score / 3; // Add the judge's score to the total score
+                                            echo "<td>{$score}</td>";
+                                        } else {
+                                            echo "<td>No Data</td>";
+                                        }
+                                    }
+
+                                    // Display the row's total score in the last column
+                                    echo "<td>{$totalScore}</td>";
+
+                                    echo "</tr>";
+                                }
+                            ?>
 
                 </table>
                 <table id="applicants">
@@ -111,56 +171,56 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <th>Judge 2</th>
                         <th>Judge 3</th>
                         <th>Total</th>
-                    <?php
+                        <?php
 
-                        $acousticQuery = "SELECT * FROM acoustic";
-                        $acousticQuery_run = mysqli_query($conn, $acousticQuery);
-                        if (mysqli_num_rows($acousticQuery_run) > 0) {
-                            while ($acousticRow = mysqli_fetch_assoc($acousticQuery_run)) {
-                    ?>
-                    <tr>
-                        <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $acousticRow['housename'] ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><?php echo $acousticRow['total'] ?></td>
-                    </tr>
+                            $judges = ['judge1', 'judge2', 'judge3'];
+                            $judgeData = array();
 
-                    <?php
+                            // Retrieve data for each judge
+                            foreach ($judges as $judge) {
+                                $sql = "SELECT judgename, housename, total FROM acoustic WHERE judgename = '$judge'";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $judgeData[$judge][] = $row;
+                                    }
+                                }
                             }
-                        }
-                    ?>
 
-                </table>
-                <table id="applicants">
-                    <h2>Acoustic Band Overall</h2>
-                    <tr>
-                        <th>House Name</th>
-                        <th>Judge 1</th>
-                        <th>Judge 2</th>
-                        <th>Judge 3</th>
-                        <th>Total</th>
-                    <?php
+                                // Find the maximum number of rows among the judges' data
+                                $maxRows = max(array_map('count', $judgeData));
 
-                        $acousticQuery = "SELECT * FROM acoustic";
-                        $acousticQuery_run = mysqli_query($conn, $acousticQuery);
-                        if (mysqli_num_rows($acousticQuery_run) > 0) {
-                            while ($acousticRow = mysqli_fetch_assoc($acousticQuery_run)) {
-                    ?>
-                    <tr>
-                        <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $acousticRow['housename'] ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><?php echo $acousticRow['total'] ?></td>
-                    </tr>
+                                for ($i = 0; $i < $maxRows; $i++) {
+                                    echo "<tr>";
 
-                    <?php
-                            }
-                        }
-                    ?>
+                                    // Display the housename in the first column
+                                    if (isset($judgeData['judge1'][$i])) {
+                                        echo "<td>{$judgeData['judge1'][$i]['housename']}</td>";
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+
+                                    // Initialize the total score for this row
+                                    $totalScore = 0;
+
+                                    // Display the data for each judge and calculate the row's total score
+                                    foreach ($judges as $judge) {
+                                        if (isset($judgeData[$judge][$i])) {
+                                            $score = (int)$judgeData[$judge][$i]['total'];
+                                            $totalScore += $score / 3; // Add the judge's score to the total score
+                                            echo "<td>{$score}</td>";
+                                        } else {
+                                            echo "<td>No Data</td>";
+                                        }
+                                    }
+
+                                    // Display the row's total score in the last column
+                                    echo "<td>{$totalScore}</td>";
+
+                                    echo "</tr>";
+                                }
+                            ?>
 
                 </table>
                 <table id="applicants">
@@ -171,26 +231,56 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <th>Judge 2</th>
                         <th>Judge 3</th>
                         <th>Total</th>
-                    <?php
+                        <?php
 
-                        $duoQuery = "SELECT * FROM duo";
-                        $duoQuery_run = mysqli_query($conn, $duoQuery);
-                        if (mysqli_num_rows($duoQuery_run) > 0) {
-                            while ($duoRow = mysqli_fetch_assoc($duoQuery_run)) {
-                    ?>
-                    <tr>
-                        <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $duoRow['housename'] ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><?php echo $duoRow['total'] ?></td>
-                    </tr>
+                            $judges = ['judge1', 'judge2', 'judge3'];
+                            $judgeData = array();
 
-                    <?php
+                            // Retrieve data for each judge
+                            foreach ($judges as $judge) {
+                                $sql = "SELECT judgename, housename, total FROM duo WHERE judgename = '$judge'";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $judgeData[$judge][] = $row;
+                                    }
+                                }
                             }
-                        }
-                    ?>
+
+                                // Find the maximum number of rows among the judges' data
+                                $maxRows = max(array_map('count', $judgeData));
+
+                                for ($i = 0; $i < $maxRows; $i++) {
+                                    echo "<tr>";
+
+                                    // Display the housename in the first column
+                                    if (isset($judgeData['judge1'][$i])) {
+                                        echo "<td>{$judgeData['judge1'][$i]['housename']}</td>";
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+
+                                    // Initialize the total score for this row
+                                    $totalScore = 0;
+
+                                    // Display the data for each judge and calculate the row's total score
+                                    foreach ($judges as $judge) {
+                                        if (isset($judgeData[$judge][$i])) {
+                                            $score = (int)$judgeData[$judge][$i]['total'];
+                                            $totalScore += $score / 3; // Add the judge's score to the total score
+                                            echo "<td>{$score}</td>";
+                                        } else {
+                                            echo "<td>No Data</td>";
+                                        }
+                                    }
+
+                                    // Display the row's total score in the last column
+                                    echo "<td>{$totalScore}</td>";
+
+                                    echo "</tr>";
+                                }
+                            ?>
 
                 </table>
                 <table id="applicants">
@@ -201,26 +291,56 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <th>Judge 2</th>
                         <th>Judge 3</th>
                         <th>Total</th>
-                    <?php
+                        <?php
 
-                        $soloQuery = "SELECT * FROM solo";
-                        $soloQuery_run = mysqli_query($conn, $soloQuery);
-                        if (mysqli_num_rows($soloQuery_run) > 0) {
-                            while ($soloRow = mysqli_fetch_assoc($soloQuery_run)) {
-                    ?>
-                    <tr>
-                        <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $soloRow['housename'] ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><?php echo $soloRow['total'] ?></td>
-                    </tr>
+                            $judges = ['judge1', 'judge2', 'judge3'];
+                            $judgeData = array();
 
-                    <?php
+                            // Retrieve data for each judge
+                            foreach ($judges as $judge) {
+                                $sql = "SELECT judgename, housename, total FROM solo WHERE judgename = '$judge'";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $judgeData[$judge][] = $row;
+                                    }
+                                }
                             }
-                        }
-                    ?>
+
+                                // Find the maximum number of rows among the judges' data
+                                $maxRows = max(array_map('count', $judgeData));
+
+                                for ($i = 0; $i < $maxRows; $i++) {
+                                    echo "<tr>";
+
+                                    // Display the housename in the first column
+                                    if (isset($judgeData['judge1'][$i])) {
+                                        echo "<td>{$judgeData['judge1'][$i]['housename']}</td>";
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+
+                                    // Initialize the total score for this row
+                                    $totalScore = 0;
+
+                                    // Display the data for each judge and calculate the row's total score
+                                    foreach ($judges as $judge) {
+                                        if (isset($judgeData[$judge][$i])) {
+                                            $score = (int)$judgeData[$judge][$i]['total'];
+                                            $totalScore += $score / 3; // Add the judge's score to the total score
+                                            echo "<td>{$score}</td>";
+                                        } else {
+                                            echo "<td>No Data</td>";
+                                        }
+                                    }
+
+                                    // Display the row's total score in the last column
+                                    echo "<td>{$totalScore}</td>";
+
+                                    echo "</tr>";
+                                }
+                            ?>
 
                 </table>
                 <table id="applicants">
@@ -231,26 +351,56 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <th>Judge 2</th>
                         <th>Judge 3</th>
                         <th>Total</th>
-                    <?php
+                        <?php
 
-                        $videomontageQuery = "SELECT * FROM videomontage";
-                        $videomontageQuery_run = mysqli_query($conn, $videomontageQuery);
-                        if (mysqli_num_rows($videomontageQuery_run) > 0) {
-                            while ($videomontageRow = mysqli_fetch_assoc($videomontageQuery_run)) {
-                    ?>
-                    <tr>
-                        <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $videomontageRow['housename'] ?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td><?php echo $videomontageRow['total'] ?></td>
-                    </tr>
+                            $judges = ['judge1', 'judge2', 'judge3'];
+                            $judgeData = array();
 
-                    <?php
+                            // Retrieve data for each judge
+                            foreach ($judges as $judge) {
+                                $sql = "SELECT judgename, housename, total FROM videomontage WHERE judgename = '$judge'";
+                                $result = $conn->query($sql);
+
+                                if ($result->num_rows > 0) {
+                                    while ($row = $result->fetch_assoc()) {
+                                        $judgeData[$judge][] = $row;
+                                    }
+                                }
                             }
-                        }
-                    ?>
+
+                                // Find the maximum number of rows among the judges' data
+                                $maxRows = max(array_map('count', $judgeData));
+
+                                for ($i = 0; $i < $maxRows; $i++) {
+                                    echo "<tr>";
+
+                                    // Display the housename in the first column
+                                    if (isset($judgeData['judge1'][$i])) {
+                                        echo "<td>{$judgeData['judge1'][$i]['housename']}</td>";
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+
+                                    // Initialize the total score for this row
+                                    $totalScore = 0;
+
+                                    // Display the data for each judge and calculate the row's total score
+                                    foreach ($judges as $judge) {
+                                        if (isset($judgeData[$judge][$i])) {
+                                            $score = (int)$judgeData[$judge][$i]['total'];
+                                            $totalScore += $score / 3; // Add the judge's score to the total score
+                                            echo "<td>{$score}</td>";
+                                        } else {
+                                            echo "<td>No Data</td>";
+                                        }
+                                    }
+
+                                    // Display the row's total score in the last column
+                                    echo "<td>{$totalScore}</td>";
+
+                                    echo "</tr>";
+                                }
+                            ?>
 
                 </table>
             </div>

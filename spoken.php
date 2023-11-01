@@ -78,7 +78,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
                     <?php
 
-                        $query = "SELECT * FROM spoken";
+                        $loggedInUsername = $_SESSION['username'];
+                        $query = "SELECT * FROM spoken WHERE judgename ='$loggedInUsername'";
                         $query_run = mysqli_query($conn, $query);
                         if (mysqli_num_rows($query_run) > 0) {
                             while ($row = mysqli_fetch_assoc($query_run)) {
@@ -107,6 +108,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                     <div class="form-handler">
                                                         <div>
                                                             <input type="hidden" name="spokenID" id="spokenID" value="<?php echo $row['id'] ?>">
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="spokenJudgeName" id="spokenJudgeName" value="<?php echo $row['judgename'] ?>">
                                                         </div>
                                                         <div>
                                                             <label for="">House Name</label><br>

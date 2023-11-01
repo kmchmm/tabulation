@@ -8,7 +8,8 @@ include('connection.php');
 /////////////////////////
 if(isset($_POST['wbSave'])){
 
-    $wbid = $_POST['wbID'];
+    $wbID = $_POST['wbID'];
+    $wbjudge = $_POST['judgename'];
     $wbhouseName = $_POST['wb1'];
     $wbchoreography = $_POST['wb2'];
     $wbexecution = $_POST['wb3'];
@@ -21,7 +22,7 @@ if(isset($_POST['wbSave'])){
     $wbcostume = $wbcostume * .1;
     $wbTotal = $wbchoreography + $wbexecution + $wbcostume;
 
-    $wb = "UPDATE wannabee SET housename='$wbhouseName',choreography='$wbchoreography', execution='$wbexecution',costume='$wbcostume', Total ='$wbTotal' WHERE id = '$wbid'" ;
+    $wb = "UPDATE wannabee SET judgename = '$wbjudge', housename='$wbhouseName',choreography='$wbchoreography', execution='$wbexecution',costume='$wbcostume', Total ='$wbTotal' WHERE id = '$wbID'" ;
     $wb_run = mysqli_query($conn,$wb);
 
     header('Location: wannabee.php?success=Information Updated!');
@@ -35,6 +36,7 @@ if(isset($_POST['wbSave'])){
 if(isset($_POST['spokenSave'])){
 
     $spokenid = $_POST['spokenID'];
+    $spokenJudgeName = $_POST['spokenJudgeName'];
     $spokenhouseName = $_POST['spoken1'];
     $spokenContent = $_POST['spoken2'];
     $spokenVoice = $_POST['spoken3'];
@@ -53,7 +55,7 @@ if(isset($_POST['spokenSave'])){
     $spokenImpact = $spokenImpact * .1;
     $spokenTotal = $spokenContent + $spokenVoice + $spokenClarity + $spokenFacial + $spokenMemorization + $spokenImpact;
 
-    $spoken = "UPDATE spoken SET housename='$spokenhouseName',content='$spokenContent', voice='$spokenVoice',clarity='$spokenClarity', facial ='$spokenFacial', memorization ='$spokenMemorization',impact ='$spokenImpact', total='$spokenTotal' WHERE id = '$spokenid'" ;
+    $spoken = "UPDATE spoken SET judgename ='$spokenJudgeName', housename='$spokenhouseName',content='$spokenContent', voice='$spokenVoice',clarity='$spokenClarity', facial ='$spokenFacial', memorization ='$spokenMemorization',impact ='$spokenImpact', total='$spokenTotal' WHERE id = '$spokenid'" ;
     $spoken_run = mysqli_query($conn,$spoken);
 
     header('Location: spoken.php?success=Information Updated!');
@@ -65,6 +67,7 @@ if(isset($_POST['spokenSave'])){
 if(isset($_POST['abSave'])){
 
     $acid = $_POST['acID'];
+    $acJudgeName = $_POST['acJudgeName'];
     $achouseName = $_POST['ab1'];
     $acVocal= $_POST['ab2'];
     $acExpression = $_POST['ab3'];
@@ -77,7 +80,7 @@ if(isset($_POST['abSave'])){
     $acShowmanship = $acShowmanship * .2;
     $acTotal = $acVocal + $acExpression + $acShowmanship;
 
-    $ac = "UPDATE acoustic SET housename='$achouseName',vocals='$acVocal', expression='$acExpression',showmanship='$acShowmanship', total ='$acTotal' WHERE id = '$acid'" ;
+    $ac = "UPDATE acoustic SET judgename = '$acJudgeName', housename='$achouseName',vocals='$acVocal', expression='$acExpression',showmanship='$acShowmanship', total ='$acTotal' WHERE id = '$acid'" ;
     $ac_run = mysqli_query($conn,$ac);
 
     header('Location: acoustic.php?success=Information Updated!');
@@ -90,6 +93,7 @@ if(isset($_POST['abSave'])){
 if(isset($_POST['dSave'])){
 
     $duoid = $_POST['duoID'];
+    $duoJudgeName = $_POST['duoJudgeName'];
     $duohouseName = $_POST['d1'];
     $duoVocal= $_POST['d2'];
     $duoExpression = $_POST['d3'];
@@ -102,7 +106,7 @@ if(isset($_POST['dSave'])){
     $duoShowmanship = $duoShowmanship * .2;
     $duoTotal = $duoVocal + $duoExpression + $duoShowmanship;
 
-    $d = "UPDATE duo SET housename='$duohouseName',vocals='$duoVocal', expression='$duoExpression',showmanship='$duoShowmanship', total ='$duoTotal' WHERE id = '$duoid'" ;
+    $d = "UPDATE duo SET judgename = '$duoJudgeName', housename='$duohouseName',vocals='$duoVocal', expression='$duoExpression',showmanship='$duoShowmanship', total ='$duoTotal' WHERE id = '$duoid'" ;
     $d_run = mysqli_query($conn,$d);
 
     header('Location: duo.php?success=Information Updated!');
@@ -114,6 +118,7 @@ if(isset($_POST['dSave'])){
 if(isset($_POST['soloSave'])){
 
     $soloid = $_POST['soloID'];
+    $soloJudgeName = $_POST['soloJudgeName'];
     $solohouseName = $_POST['solo1'];
     $soloVocal= $_POST['solo2'];
     $soloExpression = $_POST['solo3'];
@@ -126,7 +131,7 @@ if(isset($_POST['soloSave'])){
     $soloShowmanship = $soloShowmanship * .2;
     $soloTotal = $soloVocal + $soloExpression + $soloShowmanship;
 
-    $solo = "UPDATE solo SET housename='$solohouseName',vocals='$soloVocal', expression='$soloExpression',showmanship='$soloShowmanship', total ='$soloTotal' WHERE id = '$soloid'" ;
+    $solo = "UPDATE solo SET judgename='$soloJudgeName', housename='$solohouseName',vocals='$soloVocal', expression='$soloExpression',showmanship='$soloShowmanship', total ='$soloTotal' WHERE id = '$soloid'" ;
     $solo_run = mysqli_query($conn,$solo);
 
     header('Location: solo.php?success=Information Updated!');
@@ -138,6 +143,7 @@ if(isset($_POST['soloSave'])){
 if(isset($_POST['vmSave'])){
 
     $vmid = $_POST['vmID'];
+    $vmJudgeName = $_POST['vmJudgeName'];
     $vmhouseName = $_POST['vm1'];
     $vmContent= $_POST['vm2'];
     $vmCreativity = $_POST['vm3'];
@@ -150,7 +156,7 @@ if(isset($_POST['vmSave'])){
     $vmQuality = $vmQuality * .3;
     $vmTotal = $vmContent + $vmCreativity + $vmQuality;
 
-    $vm = "UPDATE videomontage SET housename='$vmhouseName',content='$vmContent', creativity='$vmCreativity',editingquality='$vmQuality', total ='$vmTotal' WHERE id = '$vmid'" ;
+    $vm = "UPDATE videomontage SET judgename ='$vmJudgeName',  housename='$vmhouseName',content='$vmContent', creativity='$vmCreativity',editingquality='$vmQuality', total ='$vmTotal' WHERE id = '$vmid'" ;
     $vm_run = mysqli_query($conn,$vm);
 
     header('Location: videomontage.php?success=Information Updated!');
@@ -167,6 +173,7 @@ if(isset($_POST['vmSave'])){
 if(isset($_POST['pnSave'])){
 
     $pnid = $_POST['pnID'];
+    $pnjudgename = $_POST['judgename'];
     $pnNum = $_POST['pnNum'];
     $pncontestantname = $_POST['pn1'];
     $pnHousename = $_POST['pnHouse'];
@@ -179,7 +186,7 @@ if(isset($_POST['pnSave'])){
 
     $pnTotal = $pnVoice + $pnDance + $pnPresence + $pnConfidence;
 
-    $pn = "UPDATE production SET Contestantnum='$pnNum', contestantname='$pncontestantname',house='$pnHousename',voice='$pnVoice', dance='$pnDance',presence='$pnPresence', confidence='$pnConfidence', total ='$pnTotal' WHERE id = '$pnid'";
+    $pn = "UPDATE contestantname SET judgename = '$pnjudgename',contestantnum='$pnNum', contestantname='$pncontestantname',house='$pnHousename', pnvoice='$pnVoice', pndance='$pnDance',pnpresence='$pnPresence', pnconfidence='$pnConfidence', pntotal ='$pnTotal' WHERE id = '$pnid'";
     $pn_run = mysqli_query($conn,$pn);
 
     header('Location: productionnumber.php?success=Information Updated!');

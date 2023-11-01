@@ -44,7 +44,6 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
             <div class="main-body">
                 <h1>Mr. & Ms. CCS Tabulation</h1>
                 <table id="applicants" class="mr-ms">
-                <h2>Judge 1 Overall</h2>
                     <tr>
                         <th>Contestant <br>Gender & Number</th>
                         <th>Contestant Name</th>
@@ -57,97 +56,53 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     </tr>
                     <?php
 
-                        $query = "SELECT * FROM contestantname";
-                        $query_run = mysqli_query($conn, $query);
-                        if (mysqli_num_rows($query_run) > 0) {
-                            while ($row = mysqli_fetch_assoc($query_run)) {
-                    ?>
-                    <tr>
-                        <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $row['contestantnum']?></td>
-                        <td><?php echo $row['contestantname']?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <?php
+                        $judges = ['judge1', 'judge2', 'judge3'];
+                        $judgeData = array();
+
+                        // Retrieve data for each judge
+                        foreach ($judges as $judge) {
+                            $sql = "SELECT * FROM contestantname WHERE judgename = '$judge'";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $judgeData[$judge][] = $row;
+                                }
                             }
                         }
-                    ?> 
-                </table>
-                <table id="applicants" class="mr-ms">
-                <h2>Judge 2 Overall</h2>
-                    <tr>
-                        <th>Contestant <br>Gender & Number</th>
-                        <th>Contestant Name</th>
-                        <th>Production Number</th>
-                        <th>School Uniform</th>
-                        <th>Futuristic Attire</th>
-                        <th>Formal Attire</th>
-                        <th>Q and A</th>
-                        <th>Total</th>
-                    </tr>
 
-                    <?php
+                            // Find the maximum number of rows among the judges' data
+                            $maxRows = max(array_map('count', $judgeData));
 
-                        $query = "SELECT * FROM contestantname";
-                        $query_run = mysqli_query($conn, $query);
-                        if (mysqli_num_rows($query_run) > 0) {
-                            while ($row = mysqli_fetch_assoc($query_run)) {
-                    ?>
-                    <tr>
-                        <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $row['contestantnum']?></td>
-                        <td><?php echo $row['contestantname']?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <?php
+                            for ($i = 0; $i < $maxRows; $i++) {
+                                echo "<tr>";
+                                // Display the contestantnum in the first column
+                                if (isset($judgeData['judge1'][$i])) {
+                                    echo "<td>" . $judgeData['judge1'][$i]['contestantnum'] . "</td>";
+                                    echo "<td>" . $judgeData['judge1'][$i]['contestantname'] . "</td>";
+                                } else {
+                                    echo "<td>No Data</td>";
+                                } 
+                                   // Initialize the total score for this row
+                                $pntotalScore = 0;
+
+                                // Display the data for each judge and calculate the row's total score
+                                foreach ($judges as $judge) {
+                                    if (isset($judgeData[$judge][$i])) {
+                                        $pnscore = (int)$judgeData[$judge][$i]['pntotal'];
+                                        $pntotalScore += $pnscore / 3; // Add the judge's score to the total score
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+                                }
+
+                                // Display the row's total score in the last column
+                                echo "<td>{$totalScore}</td>";
+
+                                echo "</tr>";
                             }
-                        }
-                    ?> 
-                </table>
-                <table id="applicants" class="mr-ms">
-                <h2>Judge 3 Overall</h2>
-                    <tr>
-                        <th>Contestant <br>Gender & Number</th>
-                        <th>Contestant Name</th>
-                        <th>Production Number</th>
-                        <th>School Uniform</th>
-                        <th>Futuristic Attire</th>
-                        <th>Formal Attire</th>
-                        <th>Q and A</th>
-                        <th>Total</th>
-                    </tr>
-                    <?php
+                        ?>
 
-                        $query = "SELECT * FROM contestantname";
-                        $query_run = mysqli_query($conn, $query);
-                        if (mysqli_num_rows($query_run) > 0) {
-                            while ($row = mysqli_fetch_assoc($query_run)) {
-                    ?>
-                    <tr>
-                        <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $row['contestantnum']?></td>
-                        <td><?php echo $row['contestantname']?></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    <?php
-                            }
-                        }
-                    ?>   
                 </table>
             </div>
         </section>
