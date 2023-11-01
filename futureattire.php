@@ -76,19 +76,19 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     </tr>
                     <?php
 
-                        $query = "SELECT * FROM future";
-                        $query_run = mysqli_query($conn, $query);
+                        $loggedInUsername = $_SESSION['username'];
+                        $query = "SELECT * FROM contestantname WHERE judgename = '$loggedInUsername'";                        $query_run = mysqli_query($conn, $query);
                         if (mysqli_num_rows($query_run) > 0) {
                             while ($row = mysqli_fetch_assoc($query_run)) {
                     ?>
                     <tr>
                         <td class="applicant_name" style="display: none;"></td>
-                        <td><?php echo $row['Contestantnum'] ?></td>
+                        <td><?php echo $row['contestantnum'] ?></td>
                         <td><?php echo $row['contestantname'] ?></td>
                         <td><?php echo $row['house'] ?></td>
-                        <td><?php echo $row['poise'] ?></td>
-                        <td><?php echo $row['confidence'] ?></td>
-                        <td><?php echo $row['overalllook'] ?></td>
+                        <td><?php echo $row['fupoise'] ?></td>
+                        <td><?php echo $row['fuconfidence'] ?></td>
+                        <td><?php echo $row['fuoverall'] ?></td>
                         <td>
                             <div class="table-buttons">
                                 <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT SCORE</button>
@@ -104,10 +104,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                     <div class="form-handler">
                                                         <div>
                                                             <label for="">Contestant Gender & Number</label> <br>
-                                                            <input type="text" name="futureNum" id="futureNum" value="<?php echo $row['Contestantnum'] ?>" readonly>
+                                                            <input type="text" name="futureNum" id="futureNum" value="<?php echo $row['contestantnum'] ?>" readonly>
                                                         </div>
                                                         <div>
                                                             <input type="hidden" name="futureID" id="futureID" value="<?php echo $row['id'] ?>">
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="judgename" id="judgename" value="<?php echo $row['judgename'] ?>">
                                                         </div>
                                                         <div>
                                                             <label for="">Contestant Name</label><br>
@@ -152,7 +155,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <input type="hidden" name="futureTotal" id="futureTotal" value="<?php echo $row['total'] ?>">
+                                                            <input type="hidden" name="futureTotal" id="futureTotal" value="<?php echo $row['futotal'] ?>">
                                                         </div>
                                                     </div>
                                                     <div class="justify-end">

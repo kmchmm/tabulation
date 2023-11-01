@@ -268,6 +268,9 @@ table td{
     letter-spacing: 3px;
     cursor: pointer;
 }
+.table-handler{
+    margin-bottom: 1em;
+}
 /***********************************/
 /***************MODAL***************/
 /***********************************/

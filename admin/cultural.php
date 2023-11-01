@@ -25,7 +25,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <header>
             <nav class="justify-center align-center">
                 <div>
-                    <a href="dashboard.php">
+                    <a href="../admin/dashboard.php">
                         <img src="../assets/images/ccs-logo.jpg" alt="">
                     </a>
                 </div>
