@@ -47,9 +47,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     <tr>
                         <th>Contestant <br>Gender & Number</th>
                         <th>Contestant Name</th>
-                        <th>Popularity</th>
-                        <th>Personality</th>
-                        <th>Photogenic</th>
+                        <th>Popularity<br>5%</th>
+                        <th>Personality<br>10%</th>
+                        <th>Photogenic<br>10%</th>
                         <th>Actions</th>
                     </tr>
                     <?php

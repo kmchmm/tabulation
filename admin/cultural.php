@@ -43,7 +43,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
         <section class="">
             <div class="main-body cultural-night">
-                <h1>Cultural Night Tabulation</h1>
+                <h1>CULTURAL NIGHT</h1>
                 <table id="applicants">
                     <h2>Wanna Bee Overall</h2>
                     <tr>
