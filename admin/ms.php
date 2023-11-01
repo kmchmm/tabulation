@@ -43,6 +43,11 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <section class="">
             <div class="main-body">
                 <h1>ADDITIONAL SCORES FOR MR & MISS CCS</h1>
+                <div id="success-message" class="success">
+                    <?php if (isset($_GET['success'])) { ?>
+                        <p><?php echo htmlspecialchars($_GET['success']); ?></p>
+                    <?php } ?>
+                </div>
                 <table id="applicants">
                     <tr>
                         <th>Contestant <br>Gender & Number</th>
