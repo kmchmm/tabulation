@@ -73,6 +73,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <th>Poise and Posture <br> 5%</th>
                         <th>Confidence and Walk <br> 5%</th>
                         <th>Overall Look <br> 5%</th>
+                        <th>Total</th>
                         <th>Actions</th>
                     </tr>
                     <?php
@@ -91,9 +92,10 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <td><?php echo $row['fopoise'] ?></td>
                         <td><?php echo $row['foconfidence'] ?></td>
                         <td><?php echo $row['fooverall'] ?></td>
+                        <td><?php echo $row['fototal'] ?></td>
                         <td>
                             <div class="table-buttons">
-                                <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT SCORE</button>
+                                <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT</button>
 
                                     <div id="myModal<?php echo $row['id'] ?>" class="modal">
                                         <div class="modal-content">
