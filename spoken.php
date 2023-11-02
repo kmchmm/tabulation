@@ -59,10 +59,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <section class="">
             <div class="main-body">
                 <h1>Spoken Poetry</h1>
-                <div id="success-message" class="success">
+                <div id="success-message">
                     <?php if (isset($_GET['success'])) { ?>
-                        <p><?php echo htmlspecialchars($_GET['success']); ?></p>
-                    <?php } ?>
+                        <p  class="success"><?php echo htmlspecialchars($_GET['success']); ?></p>
+                    <?php } elseif (isset($_GET['error'])) { ?>
+                        <p  class="error"><?php echo htmlspecialchars($_GET['error']); ?></p>
+                    <?php
+                    } ?>
                 </div>
                 <table id="applicants">
                     <tr>
@@ -118,27 +121,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                         </div>
                                                         <div>
                                                             <label for="">Content</label><br>
-                                                            <input type="number" name="spoken2" id="spoken3">
+                                                            <input type="number" name="spoken2" id="spoken3" placeholder="Max of 20 points">
                                                         </div>
                                                         <div>
                                                             <label for="">Voice Projection</label><br>
-                                                            <input type="number" name="spoken3" id="spoken1">
+                                                            <input type="number" name="spoken3" id="spoken1" placeholder="Max of 20 points">
                                                         </div>
                                                         <div>
                                                             <label for="">Clarity of Words</label><br>
-                                                            <input type="number" name="spoken4" id="spoken4">
+                                                            <input type="number" name="spoken4" id="spoken4" placeholder="Max of 20 points">
                                                         </div>
                                                         <div>
                                                             <label for="">Facial Expression and Gestures</label><br>
-                                                            <input type="number" name="spoken5" id="spoken5">
+                                                            <input type="number" name="spoken5" id="spoken5" placeholder="Max of 15 points">
                                                         </div>
                                                         <div>
                                                             <label for="">Memorization</label><br>
-                                                            <input type="number" name="spoken6" id="spoken6">
+                                                            <input type="number" name="spoken6" id="spoken6" placeholder="Max of 15 points">
                                                         </div>                                                        
                                                         <div>
                                                             <label for="">Audience Impact</label><br>
-                                                            <input type="number" name="spoken7" id="spoken7">
+                                                            <input type="number" name="spoken7" id="spoken7" placeholder="Max of 10 points">
                                                         </div>
                                                         <div>
                                                             <input type="hidden" name="spokenTotal" id="spokenTotal" value="<?php echo $row['total'] ?>">

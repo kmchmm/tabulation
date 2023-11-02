@@ -59,10 +59,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <section class="">
             <div class="main-body">
                 <h1>Video Montage</h1>
-                <div id="success-message" class="success">
+                <div id="success-message">
                     <?php if (isset($_GET['success'])) { ?>
-                        <p><?php echo htmlspecialchars($_GET['success']); ?></p>
-                    <?php } ?>
+                        <p  class="success"><?php echo htmlspecialchars($_GET['success']); ?></p>
+                    <?php } elseif (isset($_GET['error'])) { ?>
+                        <p  class="error"><?php echo htmlspecialchars($_GET['error']); ?></p>
+                    <?php
+                    } ?>
                 </div>
                 <table id="applicants">
                     <tr>
@@ -112,15 +115,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                         </div>
                                                         <div>
                                                             <label for="">Content</label><br>
-                                                            <input type="number" name="vm2" id="vm2">
+                                                            <input type="number" name="vm2" id="vm2" placeholder="Max points of 40">
                                                         </div>
                                                         <div>
                                                             <label for="">Creativity</label><br>
-                                                            <input type="number" name="vm3" id="vm3">
+                                                            <input type="number" name="vm3" id="vm3" placeholder="Max points of 30">
                                                         </div>
                                                         <div>
                                                             <label for="">Editing Quality</label><br>
-                                                            <input type="number" name="vm4" id="vm4">
+                                                            <input type="number" name="vm4" id="vm4" placeholder="Max points of 30">
                                                         </div>
                                                         <div>
                                                             <input type="hidden" name="vmTotal" id="vmTotal" value="<?php echo $row['total'] ?>">

@@ -17,16 +17,15 @@ if(isset($_POST['wbSave'])){
     $wbTotal = $_POST['wbTotal'];
 
 
-    $wbchoreography = $wbchoreography * .4;
-    $wbexecution = $wbexecution * .5;
-    $wbcostume = $wbcostume * .1;
-    $wbTotal = $wbchoreography + $wbexecution + $wbcostume;
+    if($wbchoreography > 40 && $wbexecution > 50 && $wbcostume > 10){
+        header('Location: wannabee.php?error=Exceeded the score!');
+    } else {
+        $wbTotal = $wbchoreography + $wbexecution + $wbcostume;
+        $wb = "UPDATE wannabee SET judgename = '$wbjudge', housename='$wbhouseName',choreography='$wbchoreography', execution='$wbexecution',costume='$wbcostume', Total ='$wbTotal' WHERE id = '$wbID'" ;
+        $wb_run = mysqli_query($conn,$wb);
+        header('Location: wannabee.php?success=Information Updated!');
 
-    $wb = "UPDATE wannabee SET judgename = '$wbjudge', housename='$wbhouseName',choreography='$wbchoreography', execution='$wbexecution',costume='$wbcostume', Total ='$wbTotal' WHERE id = '$wbID'" ;
-    $wb_run = mysqli_query($conn,$wb);
-
-    header('Location: wannabee.php?success=Information Updated!');
-
+    }
 }
 
 /////////////////////////
@@ -47,18 +46,15 @@ if(isset($_POST['spokenSave'])){
     $spokenTotal = $_POST['spokenTotal'];
     
 
-    $spokenContent = $spokenContent * .2;
-    $spokenVoice = $spokenVoice * .2;
-    $spokenClarity = $spokenClarity * .2;
-    $spokenFacial = $spokenFacial * .15;
-    $spokenMemorization = $spokenMemorization * .15;
-    $spokenImpact = $spokenImpact * .1;
-    $spokenTotal = $spokenContent + $spokenVoice + $spokenClarity + $spokenFacial + $spokenMemorization + $spokenImpact;
+    if($spokenContent > 20 && $spokenVoice > 20 && $spokenClarity > 20 && $spokenFacial > 15 && $spokenMemorization > 15 && $spokenImpact > 10){
+        header('Location: spoken.php?error=Exceeded the score!');
+    } else {
+        $spokenTotal = $spokenContent + $spokenVoice + $spokenClarity + $spokenFacial + $spokenMemorization + $spokenImpact;
+        $spoken = "UPDATE spoken SET judgename = '$spokenJudgeName', housename='$spokenhouseName',content='$spokenContent', voice='$spokenVoice',clarity='$spokenClarity', facial= '$spokenFacial', memorization = '$spokenMemorization', impact = '$spokenImpact', total ='$spokenTotal' WHERE id = '$spokenid'" ;
+        $spoken_run = mysqli_query($conn,$spoken);
+        header('Location: spoken.php?success=Information Updated!');
 
-    $spoken = "UPDATE spoken SET judgename ='$spokenJudgeName', housename='$spokenhouseName',content='$spokenContent', voice='$spokenVoice',clarity='$spokenClarity', facial ='$spokenFacial', memorization ='$spokenMemorization',impact ='$spokenImpact', total='$spokenTotal' WHERE id = '$spokenid'" ;
-    $spoken_run = mysqli_query($conn,$spoken);
-
-    header('Location: spoken.php?success=Information Updated!');
+    }
 
 }
 /////////////////////////
@@ -75,15 +71,16 @@ if(isset($_POST['abSave'])){
     $acTotal = $_POST['acTotal'];
 
 
-    $acVocal = $acVocal * .5;
-    $acExpression = $acExpression * .3;
-    $acShowmanship = $acShowmanship * .2;
-    $acTotal = $acVocal + $acExpression + $acShowmanship;
 
-    $ac = "UPDATE acoustic SET judgename = '$acJudgeName', housename='$achouseName',vocals='$acVocal', expression='$acExpression',showmanship='$acShowmanship', total ='$acTotal' WHERE id = '$acid'" ;
-    $ac_run = mysqli_query($conn,$ac);
+    if($acVocal > 50 && $acExpression > 30 && $acShowmanship > 20){
+        header('Location: acoustic.php?error=Exceeded the score!');
+    } else {
+        $acTotal = $acVocal + $acExpression + $acShowmanship;
+        $ac = "UPDATE acoustic SET judgename = '$acJudgeName', housename='$achouseName',vocals='$acVocal', expression='$acExpression',showmanship='$acShowmanship', total ='$acTotal' WHERE id = '$acid'" ;
+        $ac_run = mysqli_query($conn,$ac);
+        header('Location: acoustic.php?success=Information Updated!');
 
-    header('Location: acoustic.php?success=Information Updated!');
+    }
 
 }
 
@@ -101,16 +98,16 @@ if(isset($_POST['dSave'])){
     $duoTotal = $_POST['duoTotal'];
 
 
-    $duoVocal = $duoVocal * .5;
-    $duoExpression = $duoExpression * .3;
-    $duoShowmanship = $duoShowmanship * .2;
-    $duoTotal = $duoVocal + $duoExpression + $duoShowmanship;
 
-    $d = "UPDATE duo SET judgename = '$duoJudgeName', housename='$duohouseName',vocals='$duoVocal', expression='$duoExpression',showmanship='$duoShowmanship', total ='$duoTotal' WHERE id = '$duoid'" ;
-    $d_run = mysqli_query($conn,$d);
+    if($duoVocal > 50 && $duoExpression > 30 && $duoShowmanship > 20){
+        header('Location: duo.php?error=Exceeded the score!');
+    } else {
+        $duoTotal = $duoVocal + $duoExpression + $duoShowmanship;
+        $duo = "UPDATE duo SET judgename = '$duoJudgeName', housename='$duohouseName',vocals='$duoVocal', expression='$duoExpression',showmanship='$duoShowmanship', total ='$duoTotal' WHERE id = '$duoid'" ;
+        $duo_run = mysqli_query($conn,$duo);
+        header('Location: duo.php?success=Information Updated!');
 
-    header('Location: duo.php?success=Information Updated!');
-
+    }
 }
 /////////////////////////
 ////////////SOLO/////////
@@ -126,15 +123,15 @@ if(isset($_POST['soloSave'])){
     $soloTotal = $_POST['soloTotal'];
 
 
-    $soloVocal = $soloVocal * .5;
-    $soloExpression = $soloExpression * .3;
-    $soloShowmanship = $soloShowmanship * .2;
-    $soloTotal = $soloVocal + $soloExpression + $soloShowmanship;
+    if($soloVocal > 50 && $soloExpression > 30 && $soloShowmanship > 20){
+        header('Location: solo.php?error=Exceeded the score!');
+    } else {
+        $soloTotal = $soloVocal + $soloExpression + $soloShowmanship;
+        $solo = "UPDATE solo SET judgename = '$soloJudgeName', housename='$solohouseName',vocals='$soloVocal', expression='$soloExpression',showmanship='$soloShowmanship', total ='$soloTotal' WHERE id = '$soloid'" ;
+        $solo_run = mysqli_query($conn,$solo);
+        header('Location: solo.php?success=Information Updated!');
 
-    $solo = "UPDATE solo SET judgename='$soloJudgeName', housename='$solohouseName',vocals='$soloVocal', expression='$soloExpression',showmanship='$soloShowmanship', total ='$soloTotal' WHERE id = '$soloid'" ;
-    $solo_run = mysqli_query($conn,$solo);
-
-    header('Location: solo.php?success=Information Updated!');
+    }
 
 }
 /////////////////////////
@@ -151,16 +148,15 @@ if(isset($_POST['vmSave'])){
     $vmTotal = $_POST['vmTotal'];
 
 
-    $vmContent = $vmContent * .4;
-    $vmCreativity = $vmCreativity * .3;
-    $vmQuality = $vmQuality * .3;
-    $vmTotal = $vmContent + $vmCreativity + $vmQuality;
+    if($vmContent > 40 && $vmCreativity > 30 && $vmQuality > 30){
+        header('Location: videomontage.php?error=Exceeded the score!');
+    } else {
+        $vmTotal = $vmContent + $vmCreativity + $vmQuality;
+        $vm = "UPDATE videomontage SET judgename = '$vmJudgeName', housename='$vmhouseName',content='$vmContent', creativity='$vmCreativity',editingquality='$vmQuality', total ='$vmTotal' WHERE id = '$vmid'" ;
+        $vm_run = mysqli_query($conn,$vm);
+        header('Location: videomontage.php?success=Information Updated!');
 
-    $vm = "UPDATE videomontage SET judgename ='$vmJudgeName',  housename='$vmhouseName',content='$vmContent', creativity='$vmCreativity',editingquality='$vmQuality', total ='$vmTotal' WHERE id = '$vmid'" ;
-    $vm_run = mysqli_query($conn,$vm);
-
-    header('Location: videomontage.php?success=Information Updated!');
-
+    }
 }
 
 ///////////////////////////////////////////////

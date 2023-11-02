@@ -59,10 +59,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
         <section class="">
             <div class="main-body">
                 <h1>Acoustic Band</h1>
-                <div id="success-message" class="success">
+                <div id="success-message">
                     <?php if (isset($_GET['success'])) { ?>
-                        <p><?php echo htmlspecialchars($_GET['success']); ?></p>
-                    <?php } ?>
+                        <p  class="success"><?php echo htmlspecialchars($_GET['success']); ?></p>
+                    <?php } elseif (isset($_GET['error'])) { ?>
+                        <p  class="error"><?php echo htmlspecialchars($_GET['error']); ?></p>
+                    <?php
+                    } ?>
                 </div>
                 <table id="applicants">
 
@@ -112,15 +115,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                         </div>
                                                         <div>
                                                             <label for="">Vocals</label><br>
-                                                            <input type="number" name="ab2" id="ab2">
+                                                            <input type="number" name="ab2" id="ab2" placeholder="Max of 50 points">
                                                         </div>
                                                         <div>
                                                             <label for="">Expression</label><br>
-                                                            <input type="number" name="ab3" id="ab3">
+                                                            <input type="number" name="ab3" id="ab3"placeholder="Max of 30 points">
                                                         </div>
                                                         <div>
                                                             <label for="">Showmanship</label><br>
-                                                            <input type="number" name="ab4" id="ab4">
+                                                            <input type="number" name="ab4" id="ab4" placeholder="Max of 20 points">
                                                         </div>
                                                         <div>
                                                             <input type="hidden" name="acTotal" id="acTotal" value="<?php echo $row['total'] ?>">
