@@ -114,15 +114,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                         </div>
                                                         <div>
                                                             <label for="">Choreography (40 points)</label><br>
-                                                            <input type="number" name="wb2" id="wb2" placeholder="Max of 40 points">
+                                                            <input type="number" name="wb2" id="wb2" placeholder="Max of 40 points" value="<?php echo $row['choreography']?>">
                                                         </div>
                                                         <div>
                                                             <label for="">Execution (50 points)</label><br>
-                                                            <input type="number" name="wb3" id="wb3" placeholder="Max of 50 points">
+                                                            <input type="number" name="wb3" id="wb3" placeholder="Max of 50 points" value="<?php echo $row['execution']?>">
                                                         </div>
                                                         <div>
                                                             <label for="">Costume and Props (10 points)</label><br>
-                                                            <input type="number" name="wb4" id="wb4" placeholder="Max of 10 points">
+                                                            <input type="number" name="wb4" id="wb4" placeholder="Max of 10 points" value="<?php echo $row['costume']?>">
                                                         </div>
                                                         <div>
                                                             <input type="hidden" name="wbTotal" id="wbTotal" value="<?php echo $row['Total'] ?>">

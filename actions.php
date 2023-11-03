@@ -17,14 +17,13 @@ if(isset($_POST['wbSave'])){
     $wbTotal = $_POST['wbTotal'];
 
 
-    if($wbchoreography > 40 && $wbexecution > 50 && $wbcostume > 10){
-        header('Location: wannabee.php?error=Exceeded the score!');
-    } else {
+    if($wbchoreography <= 40 && $wbexecution <= 50 && $wbcostume <= 10){
         $wbTotal = $wbchoreography + $wbexecution + $wbcostume;
         $wb = "UPDATE wannabee SET judgename = '$wbjudge', housename='$wbhouseName',choreography='$wbchoreography', execution='$wbexecution',costume='$wbcostume', Total ='$wbTotal' WHERE id = '$wbID'" ;
         $wb_run = mysqli_query($conn,$wb);
         header('Location: wannabee.php?success=Information Updated!');
-
+    } else {
+        header('Location: wannabee.php?error=Exceeded the score!');
     }
 }
 
@@ -46,13 +45,14 @@ if(isset($_POST['spokenSave'])){
     $spokenTotal = $_POST['spokenTotal'];
     
 
-    if($spokenContent > 20 && $spokenVoice > 20 && $spokenClarity > 20 && $spokenFacial > 15 && $spokenMemorization > 15 && $spokenImpact > 10){
-        header('Location: spoken.php?error=Exceeded the score!');
-    } else {
+    if($spokenContent <= 20 && $spokenVoice <= 20 && $spokenClarity <= 20 && $spokenFacial <= 15 && $spokenMemorization <= 15 && $spokenImpact <= 10){
         $spokenTotal = $spokenContent + $spokenVoice + $spokenClarity + $spokenFacial + $spokenMemorization + $spokenImpact;
         $spoken = "UPDATE spoken SET judgename = '$spokenJudgeName', housename='$spokenhouseName',content='$spokenContent', voice='$spokenVoice',clarity='$spokenClarity', facial= '$spokenFacial', memorization = '$spokenMemorization', impact = '$spokenImpact', total ='$spokenTotal' WHERE id = '$spokenid'" ;
         $spoken_run = mysqli_query($conn,$spoken);
         header('Location: spoken.php?success=Information Updated!');
+
+    } else {
+        header('Location: spoken.php?error=Exceeded the score!');
 
     }
 
@@ -72,14 +72,13 @@ if(isset($_POST['abSave'])){
 
 
 
-    if($acVocal > 50 && $acExpression > 30 && $acShowmanship > 20){
-        header('Location: acoustic.php?error=Exceeded the score!');
-    } else {
+    if($acVocal <= 50 && $acExpression <= 30 && $acShowmanship <= 20){
         $acTotal = $acVocal + $acExpression + $acShowmanship;
         $ac = "UPDATE acoustic SET judgename = '$acJudgeName', housename='$achouseName',vocals='$acVocal', expression='$acExpression',showmanship='$acShowmanship', total ='$acTotal' WHERE id = '$acid'" ;
         $ac_run = mysqli_query($conn,$ac);
         header('Location: acoustic.php?success=Information Updated!');
-
+    } else {
+        header('Location: acoustic.php?error=Exceeded the score!');
     }
 
 }
@@ -99,13 +98,13 @@ if(isset($_POST['dSave'])){
 
 
 
-    if($duoVocal > 50 && $duoExpression > 30 && $duoShowmanship > 20){
-        header('Location: duo.php?error=Exceeded the score!');
-    } else {
+    if($duoVocal <= 50 && $duoExpression <= 30 && $duoShowmanship <= 20){
         $duoTotal = $duoVocal + $duoExpression + $duoShowmanship;
         $duo = "UPDATE duo SET judgename = '$duoJudgeName', housename='$duohouseName',vocals='$duoVocal', expression='$duoExpression',showmanship='$duoShowmanship', total ='$duoTotal' WHERE id = '$duoid'" ;
         $duo_run = mysqli_query($conn,$duo);
         header('Location: duo.php?success=Information Updated!');
+    } else {
+        header('Location: duo.php?error=Exceeded the score!');
 
     }
 }
@@ -123,14 +122,13 @@ if(isset($_POST['soloSave'])){
     $soloTotal = $_POST['soloTotal'];
 
 
-    if($soloVocal > 50 && $soloExpression > 30 && $soloShowmanship > 20){
-        header('Location: solo.php?error=Exceeded the score!');
-    } else {
+    if($soloVocal <= 50 && $soloExpression <= 30 && $soloShowmanship <= 20){
         $soloTotal = $soloVocal + $soloExpression + $soloShowmanship;
         $solo = "UPDATE solo SET judgename = '$soloJudgeName', housename='$solohouseName',vocals='$soloVocal', expression='$soloExpression',showmanship='$soloShowmanship', total ='$soloTotal' WHERE id = '$soloid'" ;
         $solo_run = mysqli_query($conn,$solo);
         header('Location: solo.php?success=Information Updated!');
-
+    } else {
+        header('Location: solo.php?error=Exceeded the score!');
     }
 
 }
@@ -148,14 +146,13 @@ if(isset($_POST['vmSave'])){
     $vmTotal = $_POST['vmTotal'];
 
 
-    if($vmContent > 40 && $vmCreativity > 30 && $vmQuality > 30){
-        header('Location: videomontage.php?error=Exceeded the score!');
-    } else {
+    if($vmContent <= 40 && $vmCreativity <= 30 && $vmQuality <= 30){
         $vmTotal = $vmContent + $vmCreativity + $vmQuality;
         $vm = "UPDATE videomontage SET judgename = '$vmJudgeName', housename='$vmhouseName',content='$vmContent', creativity='$vmCreativity',editingquality='$vmQuality', total ='$vmTotal' WHERE id = '$vmid'" ;
         $vm_run = mysqli_query($conn,$vm);
         header('Location: videomontage.php?success=Information Updated!');
-
+    } else {
+        header('Location: videomontage.php?error=Exceeded the score!');
     }
 }
 
@@ -216,6 +213,7 @@ if(isset($_POST['suSave'])){
 if(isset($_POST['futureSave'])){
 
     $futureID = $_POST['futureID'];
+    $futuregender = $_POST['gender'];
     $fujudgename = $_POST['judgename'];
     $futureNum = $_POST['futureNum'];
     $futurecontestantname = $_POST['future1'];
@@ -228,7 +226,7 @@ if(isset($_POST['futureSave'])){
 
     $futureTotal = $futurePoise + $futureConfidence + $futureOverall;
 
-    $future = "UPDATE contestantname SET judgename = '$fujudgename',contestantnum='$futureNum', contestantname='$futurecontestantname',house='$futureHousename',fupoise='$futurePoise', fuconfidence='$futureConfidence',fuoverall='$futureOverall', futotal ='$futureTotal' WHERE id = '$futureID'";
+    $future = "UPDATE contestantname SET judgename = '$fujudgename',contestantnum='$futureNum', gender ='$futuregender', contestantname='$futurecontestantname',house='$futureHousename',fupoise='$futurePoise', fuconfidence='$futureConfidence',fuoverall='$futureOverall', futotal ='$futureTotal' WHERE id = '$futureID'";
     $future_run = mysqli_query($conn,$future);
 
     header('Location: futureattire.php?success=Information Updated!');

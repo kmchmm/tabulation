@@ -430,7 +430,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         echo "<td>No Data</td>";
                                     }
                                 }
-                                $totalscores = $pntotalScore + $sutotalScore + $futotalScore + $fototalScore +$addtotalScore;
+                                $totalscores = $pntotalScore + $sutotalScore + $futotalScore + $fototalScore +$qatotalScore +$addtotalScore;
                                 // Display the row's total score in the last column
                                 echo "<td>{$pntotalScore}</td>";
                                 echo "<td>{$sutotalScore}</td>";
@@ -444,9 +444,8 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         ?>
 
                 </table>
-                <br>
                 <table id="applicants" class="mr-ms">
-                    <h2>Male Contestants</h2>
+                    <h2>Female Contestants</h2>
                     <tr>
                         <th>Contestant <br>Gender & Number</th>
                         <th>Contestant Name</th>
@@ -559,7 +558,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         echo "<td>No Data</td>";
                                     }
                                 }
-                                $totalscores = $pntotalScore + $sutotalScore + $futotalScore + $fototalScore +$addtotalScore;
+                                $totalscores = $pntotalScore + $sutotalScore + $futotalScore + $fototalScore +$qatotalScore + $addtotalScore;
                                 // Display the row's total score in the last column
                                 echo "<td>{$pntotalScore}</td>";
                                 echo "<td>{$sutotalScore}</td>";

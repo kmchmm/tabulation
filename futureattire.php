@@ -116,6 +116,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                             <input type="hidden" name="judgename" id="judgename" value="<?php echo $row['judgename'] ?>">
                                                         </div>
                                                         <div>
+                                                            <input type="hidden" name="gender" id="gender" value="<?php echo $row['gender'] ?>">
+                                                        </div>
+                                                        <div>
                                                             <label for="">Contestant Name</label><br>
                                                             <input type="text" name="future1" id="future1" value="<?php echo $row['contestantname'] ?>" readonly>
                                                         </div>
@@ -227,6 +230,9 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                         </div>
                                                         <div>
                                                             <input type="hidden" name="judgename" id="judgename" value="<?php echo $row['judgename'] ?>">
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="gender" id="gender" value="<?php echo $row['gender'] ?>">
                                                         </div>
                                                         <div>
                                                             <label for="">Contestant Name</label><br>
