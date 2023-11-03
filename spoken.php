@@ -121,27 +121,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                         </div>
                                                         <div>
                                                             <label for="">Content (20 points)</label><br>
-                                                            <input type="number" name="spoken2" id="spoken3" placeholder="Max of 20 points">
+                                                            <input type="number" name="spoken2" id="spoken3" placeholder="Max of 20 points" value="<?php echo $row['content']?>">
                                                         </div>
                                                         <div>
                                                             <label for="">Voice Projection (20 points)</label><br>
-                                                            <input type="number" name="spoken3" id="spoken1" placeholder="Max of 20 points">
+                                                            <input type="number" name="spoken3" id="spoken1" placeholder="Max of 20 points" value="<?php echo $row['voice']?>">
                                                         </div>
                                                         <div>
                                                             <label for="">Clarity of Words (15 points)</label><br>
-                                                            <input type="number" name="spoken4" id="spoken4" placeholder="Max of 20 points">
+                                                            <input type="number" name="spoken4" id="spoken4" placeholder="Max of 20 points" value="<?php echo $row['clarity']?>">
                                                         </div>
                                                         <div>
                                                             <label for="">Facial Expression and Gestures (15 points)</label><br>
-                                                            <input type="number" name="spoken5" id="spoken5" placeholder="Max of 15 points">
+                                                            <input type="number" name="spoken5" id="spoken5" placeholder="Max of 15 points" value="<?php echo $row['facial']?>">
                                                         </div>
                                                         <div>
                                                             <label for="">Memorization (15 points)</label><br>
-                                                            <input type="number" name="spoken6" id="spoken6" placeholder="Max of 15 points">
+                                                            <input type="number" name="spoken6" id="spoken6" placeholder="Max of 15 points" value="<?php echo $row['memorization']?>">
                                                         </div>                                                        
                                                         <div>
                                                             <label for="">Audience Impact (10 points)</label><br>
-                                                            <input type="number" name="spoken7" id="spoken7" placeholder="Max of 10 points">
+                                                            <input type="number" name="spoken7" id="spoken7" placeholder="Max of 10 points" value="<?php echo $row['impact']?>">
                                                         </div>
                                                         <div>
                                                             <input type="hidden" name="spokenTotal" id="spokenTotal" value="<?php echo $row['total'] ?>">
