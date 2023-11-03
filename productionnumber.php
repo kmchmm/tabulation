@@ -58,14 +58,14 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
         <section class="">
             <div class="main-body">
-                <h1>Production Number</h1>
+                <h1>PRODUCTION NUMBER</h1>
                 <div id="success-message" class="success">
                     <?php if (isset($_GET['success'])) { ?>
                         <p><?php echo htmlspecialchars($_GET['success']); ?></p>
                     <?php } ?>
                 </div>
                 <table id="applicants">
-                    <h2>Female</h2>
+                    <h2>Female Contestants</h2>
                     <tr>
                         <th>Contestant<br>Number</th>
                         <th>Contestant Name</th>
@@ -109,7 +109,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                 <form class=" add-form" method="POST" action="actions.php" enctype="multipart/form-data">
                                                     <div class="form-handler">
                                                         <div>
-                                                            <label for="">Contestant Gender & Number</label> <br>
+                                                            <label for="">Contestant Number</label> <br>
                                                             <input type="text" name="pnNum" id="pnNum" value="<?php echo $row['contestantnum'] ?>" readonly>
                                                         </div>
                                                         <div>
@@ -186,7 +186,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     ?>
                 </table>
                 <table id="applicants">
-                    <h2>Male</h2>
+                    <h2>Male Contestants</h2>
                     <tr>
                         <th>Contestant<br>Number</th>
                         <th>Contestant Name</th>
@@ -230,7 +230,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                 <form class=" add-form" method="POST" action="actions.php" enctype="multipart/form-data">
                                                     <div class="form-handler">
                                                         <div>
-                                                            <label for="">Contestant Gender & Number</label> <br>
+                                                            <label for="">Contestant Number</label> <br>
                                                             <input type="text" name="pnNum" id="pnNum" value="<?php echo $row['contestantnum'] ?>" readonly>
                                                         </div>
                                                         <div>

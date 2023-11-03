@@ -112,15 +112,15 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                             <input type="text" name="solo1" id="solo1" value="<?php echo $row['housename'] ?>" readonly>
                                                         </div>
                                                         <div>
-                                                            <label for="">Vocals</label><br>
+                                                            <label for="">Vocals (50 points)</label><br>
                                                             <input type="number" name="solo2" id="solo2" placeholder="Max of 50 points">
                                                         </div>
                                                         <div>
-                                                            <label for="">Expression</label><br>
+                                                            <label for="">Expression (30 points)</label><br>
                                                             <input type="number" name="solo3" id="solo3" placeholder="Max of 30 points">
                                                         </div>
                                                         <div>
-                                                            <label for="">Showmanship</label><br>
+                                                            <label for="">Showmanship (20 points)</label><br>
                                                             <input type="number" name="solo4" id="solo4" placeholder="Max of 20 points">
                                                         </div>
                                                         <div>

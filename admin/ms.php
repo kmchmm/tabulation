@@ -49,16 +49,18 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     <?php } ?>
                 </div>
                 <table id="applicants">
+                    <h2>Female Contestants</h2>
                     <tr>
-                        <th>Contestant <br>Gender & Number</th>
+                        <th>Contestant <br>Number</th>
                         <th>Contestant Name</th>
                         <th>Popularity<br>5%</th>
                         <th>Personality<br>10%</th>
                         <th>Photogenic<br>10%</th>
+                        <th>Total <br>25%</th>
                         <th>Actions</th>
                     </tr>
                     <?php
-                    $query = "SELECT * FROM contestantname";
+                    $query = "SELECT * FROM contestantname WHERE gender = 'Female'";
                     $query_run = mysqli_query($conn, $query);
                     $displayedContestants = array();
 
@@ -82,6 +84,140 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <td><?php echo $contestantPopularity ?></td>
                         <td><?php echo $contestantPersonality ?></td>
                         <td><?php echo $contestantPhotogenic ?></td>
+                        <td><?php echo $row['addtotal'] ?></td>
+                        <td>
+                        <div class="table-buttons">
+                                <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT SCORE</button>
+
+                                    <div id="myModal<?php echo $row['id'] ?>" class="modal">
+                                        <div class="modal-content">
+                                            <div>
+                                                <span class="close" onclick="closeModal(<?php echo $row['id'] ?>)">&times;</span>                                                
+                                                <h1>Additional Scores Tabulation</h1>
+                                            </div>
+                                            <div>
+                                                <form class=" add-form" method="POST" action="../actions.php" enctype="multipart/form-data">
+                                                    <div class="form-handler">
+                                                        <div>
+                                                            <label for="">Contestant Gender & Number</label> <br>
+                                                            <input type="text" name="addNum" id="addNum" value="<?php echo $row['contestantnum'] ?>" readonly>
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="additionalID" id="additionalID" value="<?php echo $row['id'] ?>">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Contestant Name</label><br>
+                                                            <input type="text" name="add1" id="add1" value="<?php echo $row['contestantname'] ?>" readonly>
+                                                        </div>
+                                                        <div>
+                                                            <label for="">House Name</label><br>
+                                                            <input type="text" name="addHouse" id="addHouse" value="<?php echo $row['house'] ?>" readonly>
+                                                        </div>
+                                                        <div class="select-handler justify-between">
+                                                            <div>
+                                                                <label for="">Popularity</label><br>
+                                                                <select name="add2" id="add2" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                </select>
+                                                            </div>
+                                                            <div>
+                                                                <label for="">Personality</label><br>
+                                                                <select name="add3" id="add3" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="select-handler justify-between">
+                                                            <div>
+                                                                <label for="">Photogenic</label><br>
+                                                                <select name="add4" id="add4" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
+                                                            </div>                                                        
+                                                        </div>
+                        
+                                                        <div>
+                                                            <input type="hidden" name="addTotal" id="addTotal" value="<?php echo $row['addtotal'] ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="justify-end">
+                                                        <button name="addSave">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <?php
+                            }
+                            
+                        }
+                    }
+                    ?>
+                </table>
+                <br>
+                <table id="applicants">
+                    <h2>Male Contestants</h2>
+                    <tr>
+                        <th>Contestant <br>Number</th>
+                        <th>Contestant Name</th>
+                        <th>Popularity<br>5%</th>
+                        <th>Personality<br>10%</th>
+                        <th>Photogenic<br>10%</th>
+                        <th>Total <br>25%</th>
+                        <th>Actions</th>
+                    </tr>
+                    <?php
+                    $query = "SELECT * FROM contestantname WHERE gender = 'Male'";
+                    $query_run = mysqli_query($conn, $query);
+                    $displayedContestants = array();
+
+                    if (mysqli_num_rows($query_run) > 0) {
+                        while ($row = mysqli_fetch_assoc($query_run)) {
+                            $contestantNum = $row['contestantnum'];
+                            $contestantName = $row['contestantname'];
+                            $contestantPopularity= $row['addpopularity'];
+                            $contestantPersonality = $row['addpersonality'];
+                            $contestantPhotogenic = $row['addphotogenic'];
+
+                            // Check if the contestant name has already been displayed
+                            if (!in_array($contestantName, $displayedContestants)) {
+                                // Display the contestant name and add it to the displayed array
+                                $displayedContestants[] = $contestantName;
+                    ?>
+                    <tr>
+                        <td class="applicant_name" style="display: none;"></td>
+                        <td><?php echo $contestantNum ?></td>
+                        <td><?php echo $contestantName ?></td>
+                        <td><?php echo $contestantPopularity ?></td>
+                        <td><?php echo $contestantPersonality ?></td>
+                        <td><?php echo $contestantPhotogenic ?></td>
+                        <td><?php echo $row['addtotal'] ?></td>
                         <td>
                         <div class="table-buttons">
                                 <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT SCORE</button>
@@ -181,6 +317,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                 <br>
                 <h1>MR & MISS CCS OVERALL</h1>
                 <table id="applicants" class="mr-ms">
+                    <h2>Female Contestants</h2>
                     <tr>
                         <th>Contestant <br>Gender & Number</th>
                         <th>Contestant Name</th>
@@ -199,7 +336,136 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
                         // Retrieve data for each judge
                         foreach ($judges as $judge) {
-                            $sql = "SELECT * FROM contestantname WHERE judgename = '$judge'";
+                            $sql = "SELECT * FROM contestantname WHERE judgename = '$judge' AND gender ='Female'";
+                            $result = $conn->query($sql);
+
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    $judgeData[$judge][] = $row;
+                                }
+                            }
+                        }
+
+                            // Find the maximum number of rows among the judges' data
+                            $maxRows = max(array_map('count', $judgeData));
+
+                            for ($i = 0; $i < $maxRows; $i++) {
+                                echo "<tr>";
+                                // Display the contestantnum in the first column
+                                if (isset($judgeData['judge1'][$i])) {
+                                    echo "<td>" . $judgeData['judge1'][$i]['contestantnum'] . "</td>";
+                                    echo "<td>" . $judgeData['judge1'][$i]['contestantname'] . "</td>";
+                                } else {
+                                    echo "<td>No Data</td>";
+                                } 
+                                   // Initialize the total score for this row
+                                $pntotalScore = 0;
+
+                                // Display the data for each judge and calculate the row's total score
+                                foreach ($judges as $judge) {
+                                    if (isset($judgeData[$judge][$i])) {
+                                        $pnscore = (int)$judgeData[$judge][$i]['pntotal'];
+                                        $pntotalScore += $pnscore / 3; // Add the judge's score to the total score
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+                                }
+
+                                $sutotalScore = 0;
+
+                                // Display the data for each judge and calculate the row's total score
+                                foreach ($judges as $judge) {
+                                    if (isset($judgeData[$judge][$i])) {
+                                        $suscore = (int)$judgeData[$judge][$i]['sutotal'];
+                                        $sutotalScore += $suscore / 3; // Add the judge's score to the total score
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+                                }
+
+                                $futotalScore = 0;
+
+                                // Display the data for each judge and calculate the row's total score
+                                foreach ($judges as $judge) {
+                                    if (isset($judgeData[$judge][$i])) {
+                                        $fuscore = (int)$judgeData[$judge][$i]['futotal'];
+                                        $futotalScore += $fuscore / 3; // Add the judge's score to the total score
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+                                }
+
+                                $fototalScore = 0;
+
+                                // Display the data for each judge and calculate the row's total score
+                                foreach ($judges as $judge) {
+                                    if (isset($judgeData[$judge][$i])) {
+                                        $foscore = (int)$judgeData[$judge][$i]['fototal'];
+                                        $fototalScore += $foscore / 3; // Add the judge's score to the total score
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+                                }
+                                
+                                $qatotalScore = 0;
+
+                                // Display the data for each judge and calculate the row's total score
+                                foreach ($judges as $judge) {
+                                    if (isset($judgeData[$judge][$i])) {
+                                        $qascore = (int)$judgeData[$judge][$i]['qatotal'];
+                                        $qatotalScore += $qascore / 3; // Add the judge's score to the total score
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+                                }
+
+                                $addtotalScore = 0;
+
+                                // Display the data for each judge and calculate the row's total score
+                                foreach ($judges as $judge) {
+                                    if (isset($judgeData[$judge][$i])) {
+                                        $addscore = (int)$judgeData[$judge][$i]['addtotal'];
+                                        $addtotalScore += $addscore; // Add the judge's score to the total score
+                                    } else {
+                                        echo "<td>No Data</td>";
+                                    }
+                                }
+                                $totalscores = $pntotalScore + $sutotalScore + $futotalScore + $fototalScore +$addtotalScore;
+                                // Display the row's total score in the last column
+                                echo "<td>{$pntotalScore}</td>";
+                                echo "<td>{$sutotalScore}</td>";
+                                echo "<td>{$futotalScore}</td>";
+                                echo "<td>{$fototalScore}</td>";
+                                echo "<td>{$qatotalScore}</td>";
+                                echo "<td>{$addtotalScore}</td>";
+                                echo "<td>{$totalscores}</td>";
+                                echo "</tr>";
+                            }
+                        ?>
+
+                </table>
+                <br>
+                <table id="applicants" class="mr-ms">
+                    <h2>Male Contestants</h2>
+                    <tr>
+                        <th>Contestant <br>Gender & Number</th>
+                        <th>Contestant Name</th>
+                        <th>Production Number</th>
+                        <th>School Uniform</th>
+                        <th>Futuristic Attire</th>
+                        <th>Formal Attire</th>
+                        <th>Q and A</th>
+                        <th>Additional Scores</th>
+                        <th>Total</th>
+                    </tr>
+                    <?php
+
+                        $judges = ['judge1', 'judge2', 'judge3'];
+                        $judgeData = array();
+
+                        // Retrieve data for each judge
+                        foreach ($judges as $judge) {
+                            $sql = "SELECT * FROM contestantname WHERE judgename = '$judge' AND gender ='Male'";
                             $result = $conn->query($sql);
 
                             if ($result->num_rows > 0) {

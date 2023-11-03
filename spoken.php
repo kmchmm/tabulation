@@ -120,27 +120,27 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                             <input type="text" name="spoken1" id="spoken1" value="<?php echo $row['housename'] ?>" readonly>
                                                         </div>
                                                         <div>
-                                                            <label for="">Content</label><br>
+                                                            <label for="">Content (20 points)</label><br>
                                                             <input type="number" name="spoken2" id="spoken3" placeholder="Max of 20 points">
                                                         </div>
                                                         <div>
-                                                            <label for="">Voice Projection</label><br>
+                                                            <label for="">Voice Projection (20 points)</label><br>
                                                             <input type="number" name="spoken3" id="spoken1" placeholder="Max of 20 points">
                                                         </div>
                                                         <div>
-                                                            <label for="">Clarity of Words</label><br>
+                                                            <label for="">Clarity of Words (15 points)</label><br>
                                                             <input type="number" name="spoken4" id="spoken4" placeholder="Max of 20 points">
                                                         </div>
                                                         <div>
-                                                            <label for="">Facial Expression and Gestures</label><br>
+                                                            <label for="">Facial Expression and Gestures (15 points)</label><br>
                                                             <input type="number" name="spoken5" id="spoken5" placeholder="Max of 15 points">
                                                         </div>
                                                         <div>
-                                                            <label for="">Memorization</label><br>
+                                                            <label for="">Memorization (15 points)</label><br>
                                                             <input type="number" name="spoken6" id="spoken6" placeholder="Max of 15 points">
                                                         </div>                                                        
                                                         <div>
-                                                            <label for="">Audience Impact</label><br>
+                                                            <label for="">Audience Impact (10 points)</label><br>
                                                             <input type="number" name="spoken7" id="spoken7" placeholder="Max of 10 points">
                                                         </div>
                                                         <div>
