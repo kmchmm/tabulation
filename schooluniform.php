@@ -65,20 +65,129 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     <?php } ?>
                 </div>
                 <table id="applicants">
+                    <h2>Female</h2>
                     <tr>
-                        <th>Contestant<br>Gender & Number</th>
+                        <th>Contestant<br>Number</th>
                         <th>Contestant Name</th>
                         <th>House Name</th>
                         <th>Poise and Posture <br> 3%</th>
                         <th>Confidence and Walk <br> 3%</th>
                         <th>Overall Look <br> 4%</th>
-                        <th>Total</th>
+                        <th>Total <br> 10%</th>
                         <th>Actions</th>
                     </tr>
                     <?php
 
                         $loggedInUsername = $_SESSION['username'];
-                        $query = "SELECT * FROM contestantname WHERE judgename = '$loggedInUsername'";
+                        $query = "SELECT * FROM contestantname WHERE judgename = '$loggedInUsername' AND gender ='Female'";
+                        $query_run = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($query_run) > 0) {
+                            while ($row = mysqli_fetch_assoc($query_run)) {
+                    ?>
+                    <tr>
+                        <td class="applicant_name" style="display: none;"></td>
+                        <td><?php echo $row['contestantnum'] ?></td>
+                        <td><?php echo $row['contestantname'] ?></td>
+                        <td><?php echo $row['house'] ?></td>
+                        <td><?php echo $row['supoise'] ?></td>
+                        <td><?php echo $row['suconfidence'] ?></td>
+                        <td><?php echo $row['suoverall'] ?></td>
+                        <td><?php echo $row['sutotal'] ?></td>
+                        <td>
+                            <div class="table-buttons">
+                                <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT</button>
+
+                                    <div id="myModal<?php echo $row['id'] ?>" class="modal">
+                                        <div class="modal-content">
+                                            <div>
+                                                <span class="close" onclick="closeModal(<?php echo $row['id'] ?>)">&times;</span>                                                
+                                                <h1>School Uniform Tabulation</h1>
+                                            </div>
+                                            <div>
+                                                <form class=" add-form" method="POST" action="actions.php" enctype="multipart/form-data">
+                                                    <div class="form-handler">
+                                                        <div>
+                                                            <label for="">Contestant Gender & Number</label> <br>
+                                                            <input type="text" name="schoolNum" id="schoolNum" value="<?php echo $row['contestantnum'] ?>" readonly>
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="schoolID" id="schoolID" value="<?php echo $row['id'] ?>">
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="judgename" id="judgename" value="<?php echo $row['judgename'] ?>">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Contestant Name</label><br>
+                                                            <input type="text" name="su1" id="su1" value="<?php echo $row['contestantname'] ?>" readonly>
+                                                        </div>
+                                                        <div>
+                                                            <label for="">House Name</label><br>
+                                                            <input type="text" name="suHouse" id="suHouse" value="<?php echo $row['house'] ?>" readonly>
+                                                        </div>
+                                                        <div class="select-handler justify-between">
+                                                            <div>
+                                                                <label for="">Poise and Posture</label><br>
+                                                                <select name="su2" id="su2" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>                                                        
+                                                            <div>
+                                                                <label for="">Confidence and Walk</label><br>
+                                                                <select name="su3" id="su3" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="select-handler">
+                                                            <div>
+                                                                <label for="">Overall Look</label><br>
+                                                                <select name="su4" id="su4" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="suTotal" id="suTotal" value="<?php echo $row['sutotal'] ?>">
+                                                        </div>
+                                                    <div class="justify-end">
+                                                        <button name="suSave">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                    }
+                    ?>
+                </table>
+                <table id="applicants">
+                    <h2>Male</h2>
+                    <tr>
+                        <th>Contestant<br>Number</th>
+                        <th>Contestant Name</th>
+                        <th>House Name</th>
+                        <th>Poise and Posture <br> 3%</th>
+                        <th>Confidence and Walk <br> 3%</th>
+                        <th>Overall Look <br> 4%</th>
+                        <th>Total <br> 10%</th>
+                        <th>Actions</th>
+                    </tr>
+                    <?php
+
+                        $loggedInUsername = $_SESSION['username'];
+                        $query = "SELECT * FROM contestantname WHERE judgename = '$loggedInUsername' AND gender ='Male'";
                         $query_run = mysqli_query($conn, $query);
                         if (mysqli_num_rows($query_run) > 0) {
                             while ($row = mysqli_fetch_assoc($query_run)) {

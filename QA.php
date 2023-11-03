@@ -64,21 +64,148 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                     <?php } ?>
                 </div>
                 <table id="applicants">
+                    <h2>Female</h2>
                     <tr>
-                        <th>Contestant<br>Gender & Number</th>
+                        <th>Contestant<br>Number</th>
                         <th>Contestant Name</th>
                         <th>House Name</th>
                         <th>Voice and Diction <br> 4%</th>
                         <th>Content <br> 10%</th>
                         <th>Confidence <br> 3%</th>
                         <th>Audience Impact <br> 3%</th>
-                        <th>Total</th>
+                        <th>Total <br> 20%</th>
                         <th>Actions</th>
                     </tr>
                     <?php
 
                         $loggedInUsername = $_SESSION['username'];
-                        $query = "SELECT * FROM contestantname WHERE judgename = '$loggedInUsername'";
+                        $query = "SELECT * FROM contestantname WHERE judgename = '$loggedInUsername' AND gender = 'Female'";
+                        $query_run = mysqli_query($conn, $query);
+                        if (mysqli_num_rows($query_run) > 0) {
+                            while ($row = mysqli_fetch_assoc($query_run)) {
+                    ?>
+                    <tr>
+                        <td class="applicant_name" style="display: none;"></td>
+                        <td><?php echo $row['contestantnum'] ?></td>
+                        <td><?php echo $row['contestantname'] ?></td>
+                        <td><?php echo $row['house'] ?></td>
+                        <td><?php echo $row['qavoice'] ?></td>
+                        <td><?php echo $row['qacontent'] ?></td>
+                        <td><?php echo $row['qaconfidence'] ?></td>
+                        <td><?php echo $row['qaaudience'] ?></td>
+                        <td><?php echo $row['qatotal'] ?></td>
+                        <td>
+                            <div class="table-buttons">
+                                <button onclick="showModal(<?php echo $row['id'] ?>)">EDIT</button>
+
+                                    <div id="myModal<?php echo $row['id'] ?>" class="modal">
+                                        <div class="modal-content">
+                                            <div>
+                                                <span class="close" onclick="closeModal(<?php echo $row['id'] ?>)">&times;</span>                                                
+                                                <h1>Question and Answer Tabulation</h1>
+                                            </div>
+                                            <div>
+                                                <form class=" add-form" method="POST" action="actions.php" enctype="multipart/form-data">
+                                                    <div class="form-handler">
+                                                        <div>
+                                                            <label for="">Contestant Gender & Number</label> <br>
+                                                            <input type="text" name="qaNum" id="qaNum" value="<?php echo $row['contestantnum'] ?>" readonly>
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="qaID" id="qaID" value="<?php echo $row['id'] ?>">
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="judgename" id="judgename" value="<?php echo $row['judgename'] ?>">
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Contestant Name</label><br>
+                                                            <input type="text" name="qa1" id="qa1" value="<?php echo $row['contestantname'] ?>" readonly>
+                                                        </div>
+                                                        <div>
+                                                            <label for="">Contestant Name</label><br>
+                                                            <input type="text" name="qaHouse" id="qaHouse" value="<?php echo $row['house'] ?>" readonly>
+                                                        </div>
+                                                        <div class="select-handler justify-between">
+                                                            <div>
+                                                                <label for="">Voice and Diction</label><br>
+                                                                <select name="qa2" id="qa2" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                </select>
+                                                            </div>
+                                                            <div>
+                                                                <label for="">Content</label><br>
+                                                                <select name="qa3" id="qa3" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                    <option value="4">4</option>
+                                                                    <option value="5">5</option>
+                                                                    <option value="6">6</option>
+                                                                    <option value="7">7</option>
+                                                                    <option value="8">8</option>
+                                                                    <option value="9">9</option>
+                                                                    <option value="10">10</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div class="select-handler justify-between">
+                                                            <div>
+                                                                <label for="">Confidence</label><br>
+                                                                <select name="qa4" id="qa4" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>                                                        
+                                                            <div>
+                                                                <label for="">Audience Impact</label><br>
+                                                                <select name="qa5" id="qa5" class="select">
+                                                                    <option value="1">1</option>
+                                                                    <option value="2">2</option>
+                                                                    <option value="3">3</option>
+                                                                </select>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <input type="hidden" name="qaTotal" id="qaTotal" value="<?php echo $row['qatotal'] ?>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="justify-end">
+                                                        <button name="qaSave">Save</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                            </div>
+                        </td>
+                    </tr>
+                    <?php
+                        }
+                    }
+                    ?>
+                </table>
+                <table id="applicants">
+                    <h2>Female</h2>
+                    <tr>
+                        <th>Contestant<br>Number</th>
+                        <th>Contestant Name</th>
+                        <th>House Name</th>
+                        <th>Voice and Diction <br> 4%</th>
+                        <th>Content <br> 10%</th>
+                        <th>Confidence <br> 3%</th>
+                        <th>Audience Impact <br> 3%</th>
+                        <th>Total <br> 20%</th>
+                        <th>Actions</th>
+                    </tr>
+                    <?php
+
+                        $loggedInUsername = $_SESSION['username'];
+                        $query = "SELECT * FROM contestantname WHERE judgename = '$loggedInUsername' AND gender = 'Male'";
                         $query_run = mysqli_query($conn, $query);
                         if (mysqli_num_rows($query_run) > 0) {
                             while ($row = mysqli_fetch_assoc($query_run)) {
