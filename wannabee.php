@@ -31,7 +31,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                         <div class="select">
                             <select id="eventSelect">
                                 <option value="dashboard.php" style="display: none;">Cultural Night</option>                     
-                                <option value="wannabee.php">Wanna Bee</option>
+                                <option value="wannabee.php">Wanna Be</option>
                                 <option value="spoken.php">Spoken Poetry</option>
                                 <option value="acoustic.php">Acoustic Band</option>
                                 <option value="duo.php">Duo</option>
@@ -58,7 +58,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
 
         <section class="">
             <div class="main-body">
-                <h1>Wanna Bee</h1>
+                <h1>Wanna Be</h1>
                 <div id="success-message">
                     <?php if (isset($_GET['success'])) { ?>
                         <p  class="success"><?php echo htmlspecialchars($_GET['success']); ?></p>
@@ -97,7 +97,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         <div class="modal-content">
                                             <div>
                                                 <span class="close" onclick="closeModal(<?php echo $row['id'] ?>)">&times;</span>                                                
-                                                <h1>Wanna Bee Tabulation</h1>
+                                                <h1>Wanna Be</h1>
                                             </div>
                                             <div>
                                                 <form class="add-form" method="POST" action="actions.php" enctype="multipart/form-data">

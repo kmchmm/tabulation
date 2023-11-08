@@ -97,7 +97,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         <div class="modal-content">
                                             <div>
                                                 <span class="close" onclick="closeModal(<?php echo $row['id'] ?>)">&times;</span>                                                
-                                                <h1>Duo Tabulation</h1>
+                                                <h1>Duo</h1>
                                             </div>
                                             <div>
                                                 <form class=" add-form" method="POST" action="actions.php" enctype="multipart/form-data">

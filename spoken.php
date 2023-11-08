@@ -104,7 +104,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                         <div class="modal-content">
                                             <div>
                                                 <span class="close" onclick="closeModal(<?php echo $row['id'] ?>)">&times;</span> 
-                                                <h1>Spoken Poetry Tabulation</h1>
+                                                <h1>Spoken Poetry</h1>
                                             </div>
                                             <div>
                                                 <form class=" add-form" method="POST" action="actions.php" enctype="multipart/form-data">
@@ -128,7 +128,7 @@ if (isset($_SESSION['id']) && isset($_SESSION['username'])) {
                                                             <input type="number" name="spoken3" id="spoken1" placeholder="Max of 20 points" value="<?php echo $row['voice']?>">
                                                         </div>
                                                         <div>
-                                                            <label for="">Clarity of Words (15 points)</label><br>
+                                                            <label for="">Clarity of Words (20 points)</label><br>
                                                             <input type="number" name="spoken4" id="spoken4" placeholder="Max of 20 points" value="<?php echo $row['clarity']?>">
                                                         </div>
                                                         <div>
